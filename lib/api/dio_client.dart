@@ -21,7 +21,7 @@ class DioClient {
     this.sharedPreferences,
   }) {
     token = sharedPreferences.getString(Appconstants.Token);
-    print(token);
+     print(token);
     dio = dioC ?? Dio();
     dio
       ..options.baseUrl = baseUrl
