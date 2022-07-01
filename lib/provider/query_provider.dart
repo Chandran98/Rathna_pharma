@@ -14,39 +14,12 @@ class Queryprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future<Queryresponse> queryupload(querryid, query, customerid, contxt) async {
-  //   setloading(true);
-  //   try {
-  //     String url = "https://libsitservices.com/core/api/query/querry";
-  //     var response;
-  //     var data = {
-  //       "querry_id": querryid,
-  //       "querry": query,
-  //       "customer_id": customerid,
-  //     };
-  //     response = await http.post(Uri.parse(url), body: data);
-  //     if (response.s == 200) {
-  //       setloading(false);
-  //       Utils.toastmessage("Submitted successfully");
-  //       notifyListeners();
-  //     } else {
-  //       Utils.toastmessage("failed");
-  //     }
-  //     notifyListeners();
-  //   } catch (e) {
-  //     setloading(false);
-  //     print(e.toString());
-  //   }
-  // }
   Future<Queryresponse> queryupload(querryid, query, customerid, contxt) async {
     setloading(true);
     try {
       final String url = AppURl.queryurl;
 
-      // dynamic data =
-      // print(querry);
-      // print(querryid);
-      // print(querry);
+ 
       var response = await http.post(Uri.parse(url), body: {
         "querry_id": querryid,
         "querry": query,

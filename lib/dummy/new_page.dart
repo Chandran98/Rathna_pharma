@@ -13,7 +13,7 @@ class _COverdatapageState extends State<COverdatapage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<LrupdateProvider>(context, listen: false).getApiCall();
+    Provider.of<LrupdateProvider>(context, listen: false).getApiCall(context);
   }
 
   @override

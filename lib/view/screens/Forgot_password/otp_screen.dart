@@ -27,73 +27,101 @@ class _OTPscreenState extends State<OTPscreen> {
     var forgotpassprovider = Provider.of<Forgotpassprovider>(context);
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            spacedh20,
-            Text(forgotpassprovider.otp.toString()),
-            spacedh20,
-            TextFormField(keyboardType: TextInputType.number,
-              validator: MultiValidator([
-                RequiredValidator(errorText: "OTP"),
-              ]),
-              // maxLines: 5,
-              controller: otpcontroller,
-              style: primaryTextStyle(),
-              // focusNode: emailFocus,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person, color: Color(0xFFA8ABAD)),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  // borderSide: BorderSide(color: appPrimaryColor)
-                ),
-                enabledBorder: OutlineInputBorder(
+        backgroundColor: white,
+        appBar: AppBar(
+            backgroundColor: white,
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.arrow_back,
+                color: black,
+              ),
+            )),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+               spacedh40,
+            Text(
+              "Forgot Password?",
+              style: primaryTextStyle(weight: FontWeight.w600, size: 22),
+            ),
+            spacedh10,
+            Text(
+              "Otp has been sent to your email ${forgotpassprovider.email}",
+              style: secondaryTextStyle(
+                  weight: FontWeight.w600, size: 16, color: lightGrey),
+            ),
+              spacedh20,
+              TextFormField(
+                keyboardType: TextInputType.number,
+                validator: MultiValidator([
+                  RequiredValidator(errorText: "OTP"),
+                ]),
+                // maxLines: 5,
+                controller: otpcontroller,
+                style: primaryTextStyle(),
+                // focusNode: emailFocus,
+                decoration: InputDecoration(
+                  prefixIcon:
+                      const Icon(Icons.person, color: Color(0xFFA8ABAD)),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    borderSide:
-                        const BorderSide(width: 1, color: Color(0xFFA8ABAD))),
-                labelText: 'OTP',
-                labelStyle: primaryTextStyle(),
+                    // borderSide: BorderSide(color: appPrimaryColor)
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide:
+                          const BorderSide(width: 1, color: Color(0xFFA8ABAD))),
+                  labelText: 'OTP',
+                  labelStyle: primaryTextStyle(),
+                ),
+                //isDarkModeOn ? white : blackColor,
+                // keyboardType: TextInputType.emailAddress,
+                // validator: (s) {
+                //   if (s.trim().isEmpty) return 'Password is required';
+                //   return null;
+                // },
               ),
-              //isDarkModeOn ? white : blackColor,
-              // keyboardType: TextInputType.emailAddress,
-              // validator: (s) {
-              //   if (s.trim().isEmpty) return 'Password is required';
-              //   return null;
-              // },
-            ),
-            spacedh40,
-            Container(
-              height: 50,
-              width: 150,
-              child: Material(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.green,
-                elevation: 7.0,
-                child: TextButton(
-                  // ignore: void_checks
-                  onPressed: () {
-                    print(otpcontroller.text.toString());
-                    if (otpcontroller.text
-                            .compareTo(forgotpassprovider.otp.toString()) ==
-                        0) {
-                      return Timer(const Duration(seconds: 2), (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => NewPasswordscreen()));
-                        Utils.toastmessage("valid credentials");
-                      }));
-                    } else {
-                      return Timer(const Duration(seconds: 2),
-                          (() => Utils.toastmessage("Invalid credentials")));
-                    }
-                  },
-                  child: const Center(
-                      child: Text('Submit',
-                          style: TextStyle(color: white, fontSize: 20))),
+              Padding(
+              padding: const EdgeInsets.only(top: 80.0),
+                child: SizedBox(
+                  height: 50,
+                  
+                  child: Material(
+                  borderRadius: BorderRadius.circular(12.0),
+                  color: purple,
+                  elevation: 7.0,
+                    child: TextButton(
+                      // ignore: void_checks
+                      onPressed: () {
+                        print(otpcontroller.text.toString());
+                        if (otpcontroller.text
+                                .compareTo(forgotpassprovider.otp.toString()) ==
+                            0) {
+                          return Timer(const Duration(seconds: 2), (() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => NewPasswordscreen()));
+                            Utils.toastmessage("valid credentials");
+                          }));
+                        } else {
+                          return Timer(const Duration(seconds: 2),
+                              (() => Utils.toastmessage("Invalid credentials")));
+                        }
+                      },
+                      child: const Center(
+                          child: Text('Verify code',
+                              style: TextStyle(color: white, fontSize: 20))),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

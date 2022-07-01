@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/services/auth_services.dart';
 import 'package:rathna/view/screens/Login_screen.dart';
+import 'package:rathna/view/screens/Main_home_screen.dart';
 import 'package:rathna/view/screens/home_screen.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -17,12 +19,13 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   void initState() {
+    
     prefservice.getstatus("status").then((value) {
       print(value);
       if (value == true) {
         return Timer(const Duration(seconds: 2),(() => 
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => Homescreen()))));
+            context, MaterialPageRoute(builder: (_) => MainHomepage()))));
       } else {
           return Timer(const Duration(seconds: 2),(() => 
         Navigator.pushReplacement(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
-import 'package:rathna/provider/Lr_provider.dart';
+import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/provider/return_provider.dart';
 
 class Returnspage extends StatefulWidget {
@@ -15,12 +15,21 @@ class _ReturnspageState extends State<Returnspage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<ReturnProvider>(context, listen: false).getApiCall();
+    setState(() {
+      
+    });
+    Provider.of<ReturnProvider>(context, listen: false).getApiCall(context);
+
+    Provider.of<Authprovider>(context, listen: false).customerId;
   }
 
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<ReturnProvider>(context);
+
+    var customerid =
+        Provider.of<Authprovider>(context,).customerId;
+        print(customerid);
     return Scaffold(
         appBar: AppBar(
           title: Text("Return's"),

@@ -15,7 +15,7 @@ class _CoverpageState extends State<Coverpage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<CoverProvider>(context, listen: false).getApiCall();
+    Provider.of<CoverProvider>(context, listen: false).getApiCall(context);
   }
 
   @override

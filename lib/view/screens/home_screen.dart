@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
+import 'package:rathna/provider/User_provider.dart';
+import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
 import 'package:rathna/view/screens/Lr_update_details_page.dart';
 import 'package:rathna/view/screens/Returns_page.dart';
@@ -15,12 +17,19 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  
+    @override
+    void initState() {
+      super.initState();
+      setState(() {
+        
+      });
+      Provider.of<UserProvider>(context,listen: false).getApiCall(context);
+    }
   @override
   Widget build(BuildContext context) {
-    final Prefservice prefservice = Prefservice();
-
-    // var authpro = Provider.of<Authprovider>(context);
     var theme = Provider.of<Themeprovider>(context);
+    var userprovider = Provider.of<UserProvider>(context,listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -37,8 +46,8 @@ class _HomescreenState extends State<Homescreen> {
                         "assets/images/rathna.jpg",
                       ),
                     ),
-                    const Text(
-                      "User no. : RE123456",
+                     Text(
+                      "User no. : ${ userprovider.customerid}",
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     )
                   ],
@@ -65,16 +74,16 @@ class _HomescreenState extends State<Homescreen> {
                             style:
                                  TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
                           ),spacedh10,
-                          const Text(
-                            "User name. : Albemic pharma",
+                           Text(
+                            "User name. : ${ userprovider.name}",
                             style:
                                  TextStyle(fontSize: 16,color: grey),
-                          ), const Text(
-                        "Customer ID : RE123456",
+                          ),  Text(
+                        "Customer ID : ${ userprovider.customerid}",
                         style:
                             TextStyle(fontSize: 16,color: grey),
-                      ), const Text(
-                        "Cusotmer email: Albemicpharma@gmail.com",
+                      ),  Text(
+                        "Cusotmer email:${ userprovider.email}",
                         style:
                              TextStyle(fontSize: 16,color: grey),
                       ),

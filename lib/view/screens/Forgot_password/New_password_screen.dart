@@ -17,34 +17,34 @@ class NewPasswordscreen extends StatelessWidget {
     var forgotpassprovider = Provider.of<Forgotpassprovider>(context);
     return SafeArea(
       child: Scaffold(
+        backgroundColor: white,
+        appBar: AppBar(
+            backgroundColor: white,
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.arrow_back,
+                color: black,
+              ),
+            )),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(            crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
-              Container(
-                  height: 60,
-                  width: double.maxFinite,
-                  margin: const EdgeInsets.all(15.0),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: Colors.black38)),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.mail,
-                        color: Colors.black38,
-                      ),
-                      spacedw20,
-                      Text(
-                        forgotpassprovider.email,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: grey),
-                      )
-                    ],
-                  )),
+                 spacedh40,
+            Text(
+              "New Password",
+              style: primaryTextStyle(weight: FontWeight.w600, size: 22),
+            ),
+            spacedh10,
+            Text(
+              "Please enter your newpassword ",
+              style: secondaryTextStyle(
+                  weight: FontWeight.w600, size: 16, color: lightGrey),
+            ),
+          
               spacedh40,
               TextField(
                 // maxLines: 5,
@@ -53,7 +53,7 @@ class NewPasswordscreen extends StatelessWidget {
                 // focusNode: emailFocus,
                 decoration: InputDecoration(
                   prefixIcon:
-                      const Icon(Icons.person, color: Color(0xFFA8ABAD)),
+                      const Icon(Icons.lock, color: Color(0xFFA8ABAD)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     // borderSide: BorderSide(color: appPrimaryColor)
@@ -66,29 +66,31 @@ class NewPasswordscreen extends StatelessWidget {
                   labelStyle: primaryTextStyle(),
                 ),
               ),
-              spacedh40,
-              Container(
-                height: 50,
-                width: 150,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: Colors.green,
+              Padding(
+              padding: const EdgeInsets.only(top: 80.0),
+                child: SizedBox(
+                  height: 50,
+                  
+                  child: Material(
+                  borderRadius: BorderRadius.circular(12.0),
+                  color: purple,
                   elevation: 7.0,
-                  child: TextButton(
-                    onPressed: () {
-                      Newpasswordrepo().updatepassword(
+                    child: TextButton(
+                      // ignore: void_checks
+                      onPressed: () {
+                         Newpasswordrepo().updatepassword(
                           forgotpassprovider.email.toString(),
                           newpasswordcontroller.text,
                           context);
-                      // forgotpassprovider.forgotpassword(
-                      //     emailcontroller.text, context);
-                    },
-                    child: const Center(
-                        child: Text('Submit',
-                            style: TextStyle(color: white, fontSize: 20))),
+                      },
+                      child: const Center(
+                          child: Text('Submit',
+                              style: TextStyle(color: white, fontSize: 20))),
+                    ),
                   ),
                 ),
               ),
+              
             ],
           ),
         ),

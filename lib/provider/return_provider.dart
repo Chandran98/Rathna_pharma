@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:rathna/models/Return_model.dart';
+import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/utils/app_url.dart';
 
 class ReturnProvider with ChangeNotifier {
@@ -10,10 +12,14 @@ class ReturnProvider with ChangeNotifier {
     return _models;
   }
 
-  Future<void> getApiCall() async {
+  Future<void> getApiCall(context) async {
+    var userid = Provider.of<Authprovider>(context, listen: false).customerId;
+    print(userid);
     try {
       List<Returndata> loadData = [];
-      var response = await http.get(Uri.parse(AppURl.returnsurl));
+      var response = await http.get(Uri.parse(AppURl.returnsurl+userid
+          ));
+      print(userid);
       var jsonData = jsonDecode(response.body);
       if (response.statusCode == 200) {
         print(jsonData['returns_data'].length);

@@ -12,8 +12,10 @@ class Newpasswordrepo {
       var dio = Dio();
       print(email);
       print(password);
-      response = await dio.post(AppURl.newpassword,
-          data: {"customer_email": email, "customer_pass": password});
+      response = await dio.put(AppURl.newpassword, queryParameters: {
+        "customer_email": email,
+        "customer_pass": password
+      });
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => MainHomepage()));

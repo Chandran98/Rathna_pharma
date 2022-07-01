@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:rathna/services/auth_services.dart';
+import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
 import 'package:rathna/view/screens/Login_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,7 +26,7 @@ class _SettingscreenState extends State<Settingscreen> {
         appBar: AppBar(
           backgroundColor: white,
           elevation: 0,
-          title: Text(
+          title: const Text(
             "Profile",
             style: TextStyle(color: black),
           ),

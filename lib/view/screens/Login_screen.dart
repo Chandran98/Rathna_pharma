@@ -15,13 +15,19 @@ class Loginscreen extends StatefulWidget {
 class _LoginscreenState extends State<Loginscreen> {
 //   final bool _isLoading = false;
 // Authprovider _authprovider= Authprovider();
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<Authprovider>(context, listen: false);
+  }
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   var emailFocus = FocusNode();
   var passwordFocus = FocusNode();
   @override
   Widget build(BuildContext context) {
-    // var aupro= Provider.of<Authprovider>(context);
+    var aupro = Provider.of<Authprovider>(context);
     return SafeArea(
       child: Container(
         decoration: const BoxDecoration(
@@ -119,7 +125,9 @@ class _LoginscreenState extends State<Loginscreen> {
                         child: IconButton(
                           color: Colors.white,
                           onPressed: () {
-                            Authrepo().login(emailController.text,
+                            // Authrepo().login(emailController.text,
+                            //     passwordController.text, context);
+                            aupro.login(emailController.text,
                                 passwordController.text, context);
                           },
                           icon: const Icon(Icons.arrow_forward),
