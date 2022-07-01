@@ -27,13 +27,16 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(height: 100,),
+              Container(
+                height: 100,
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 30),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 child: Column(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: <Widget>[
-                     Text(
+                    Text(
                       'Explore Our Services',
                       style: TextStyle(
                         fontFamily: 'Avenir',
@@ -162,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                           //   child: Image.asset(planets[index].iconImage),
                           // ),
                           Positioned(
-                            right: 24,top: 120,
+                            right: 24, top: 120,
                             // bottom: 60,
                             child: Text(
                               planets[index].position.toString(),
@@ -234,7 +237,7 @@ class PlanetInfo {
 List<PlanetInfo> planets = [
   PlanetInfo(1,
       name: 'Inward Cover',
-      iconImage: 'assets/mercury.png',
+      iconImage: 'assets/images/Covers.jpg',
       description:
           "Zipping around the sun in only 88 days, Mercury is the closest planet to the sun, and it's also the smallest, only a little bit larger than Earth's moon. Because its so close to the sun (about two-fifths the distance between Earth and the sun), Mercury experiences dramatic changes in its day and night temperatures: Day temperatures can reach a scorching 840  F (450 C), which is hot enough to melt lead. Meanwhile on the night side, temperatures drop to minus 290 F (minus 180 C).",
       images: [
@@ -245,7 +248,7 @@ List<PlanetInfo> planets = [
       ]),
   PlanetInfo(2,
       name: 'Outward Cover',
-      iconImage: 'assets/venus.png',
+      iconImage: 'assets/images/Covers.jpg',
       description:
           "The second planet from the sun, Venus is Earth's twin in size. Radar images beneath its atmosphere reveal that its surface has various mountains and volcanoes. But beyond that, the two planets couldn't be more different. Because of its thick, toxic atmosphere that's made of sulfuric acid clouds, Venus is an extreme example of the greenhouse effect. It's scorching-hot, even hotter than Mercury. The average temperature on Venus' surface is 900 F (465 C). At 92 bar, the pressure at the surface would crush and kill you. And oddly, Venus spins slowly from east to west, the opposite direction of most of the other planets.",
       images: [
@@ -254,7 +257,7 @@ List<PlanetInfo> planets = [
       ]),
   PlanetInfo(3,
       name: 'Returns',
-      iconImage: 'assets/earth.png',
+      iconImage: 'assets/images/Returns.jpg',
       description:
           "The third planet from the sun, Earth is a waterworld, with two-thirds of the planet covered by ocean. It's the only world known to harbor life. Earth's atmosphere is rich in nitrogen and oxygen. Earth's surface rotates about its axis at 1,532 feet per second (467 meters per second) — slightly more than 1,000 mph (1,600 kph) — at the equator. The planet zips around the sun at more than 18 miles per second (29 km per second).",
       images: [
@@ -265,9 +268,31 @@ List<PlanetInfo> planets = [
       ]),
   PlanetInfo(4,
       name: 'Lr Update',
-      iconImage: 'assets/mars.png',
+      iconImage: 'assets/images/Lr_update.jpg',
       description:
           "The fourth planet from the sun is Mars, and it's a cold, desert-like place covered in dust. This dust is made of iron oxides, giving the planet its iconic red hue. Mars shares similarities with Earth: It is rocky, has mountains, valleys and canyons, and storm systems ranging from localized tornado-like dust devils to planet-engulfing dust storms. ",
       images: []),
-  
+];
+
+class Categorylist {
+  String categorytitle, categorysubtitle, categorypageimages;
+  int index;
+  Categorylist(
+      {this.categorypageimages,
+      this.categorysubtitle,
+      this.categorytitle,
+      this.index});
+}
+
+final List<Categorylist> categorylist = [
+  Categorylist(
+      categorypageimages: 'assets/images/Lr_update.jpg',
+      categorytitle: 'Lr Update',
+      index: 1),  Categorylist(
+      categorypageimages: 'assets/images/Covers.jpg',
+      categorytitle: 'Outward Cover',
+      index: 2),  Categorylist(
+      categorypageimages: 'assets/images/Returns.jpg',
+      categorytitle: 'Returns',
+      index: 3)
 ];

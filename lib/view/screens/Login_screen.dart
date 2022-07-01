@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/services/auth_services.dart';
 import 'package:rathna/theme/colors/textstyle.dart';
+import 'package:rathna/view/screens/Forgot_password/forgot_password_screen.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({Key key}) : super(key: key);
@@ -49,15 +50,16 @@ class _LoginscreenState extends State<Loginscreen> {
                     style: primaryTextStyle(),
                     // focusNode: emailFocus,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email, color: Color(0xFFA8ABAD)),
+                      prefixIcon:
+                          const Icon(Icons.email, color: Color(0xFFA8ABAD)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         // borderSide: BorderSide(color: appPrimaryColor)
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide:
-                              BorderSide(width: 1, color: Color(0xFFA8ABAD))),
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xFFA8ABAD))),
                       labelText: 'Email',
                       labelStyle: primaryTextStyle(),
                     ),
@@ -77,15 +79,16 @@ class _LoginscreenState extends State<Loginscreen> {
                     style: primaryTextStyle(),
                     // focusNode: emailFocus,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email, color: Color(0xFFA8ABAD)),
+                      prefixIcon:
+                          const Icon(Icons.email, color: Color(0xFFA8ABAD)),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         // borderSide: BorderSide(color: appPrimaryColor)
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide:
-                              BorderSide(width: 1, color: Color(0xFFA8ABAD))),
+                          borderSide: const BorderSide(
+                              width: 1, color: Color(0xFFA8ABAD))),
                       labelText: 'Password',
                       labelStyle: primaryTextStyle(),
                     ),
@@ -93,7 +96,6 @@ class _LoginscreenState extends State<Loginscreen> {
                     // keyboardType: TextInputType.emailAddress,
                     validator: (s) {
                       if (s.trim().isEmpty) return 'Password is required';
-                      // if (!s.trim().validateEmail()) return 'Email is not valid';
                       return null;
                     },
                   ),
@@ -145,7 +147,12 @@ class _LoginscreenState extends State<Loginscreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPassword()));
+                          },
                           child: const Text(
                             'Forgot Password',
                             style: TextStyle(

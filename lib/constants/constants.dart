@@ -1,11 +1,9 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/colors/color_palette.dart';
-
 
 Color textPrimaryColorGlobal = textPrimaryColor;
 Color textSecondaryColorGlobal = textSecondaryColor;
@@ -48,7 +46,7 @@ double desktopBreakpointGlobal = 720.0;
 
 int passwordLengthGlobal = 6;
 
- SharedPreferences sharedPreferences;
+SharedPreferences sharedPreferences;
 
 ShapeBorder defaultDialogShape;
 
@@ -67,3 +65,17 @@ ShapeBorder defaultDialogShape;
 
 // PageRouteAnimation? pageRouteAnimationGlobal;
 // Duration pageRouteTransitionDurationGlobal = 700.milliseconds;
+
+// ignore: non_constant_identifier_names
+
+// height //
+var spacedh10 = const SizedBox(height: 10);
+var spacedh20 = const SizedBox(height: 20);
+var spacedh30 = const SizedBox(height: 30);
+var spacedh40 = const SizedBox(height: 40);
+
+// width  //
+var spacedw10 = const SizedBox(width: 10);
+var spacedw20 = const SizedBox(width: 20);
+var spacedw30 = const SizedBox(width: 30);
+var spacedw40 = const SizedBox(width: 40);

@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Authrepo {
+  // ignore: missing_return
   Future<Loginmodel> login(email, password, context) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     try {

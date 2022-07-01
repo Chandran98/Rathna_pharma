@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rathna/dummy/fdaafsdsadffsd.dart';
-import 'package:rathna/dummy/new_page.dart';
 import 'package:rathna/provider/Lr_provider.dart';
 import 'package:rathna/provider/User_provider.dart';
 import 'package:rathna/provider/cover_provider.dart';
+import 'package:rathna/provider/forgot_pass_provider.dart';
+import 'package:rathna/provider/query_provider.dart';
 import 'package:rathna/provider/return_provider.dart';
 import 'package:rathna/provider/theme_provider.dart';
 import 'package:rathna/theme/dark_theme.dart';
 import 'package:rathna/theme/light_theme.dart';
 import 'package:rathna/utils/app_constants.dart';
+import 'package:rathna/view/base/Nod_.dart';
+import 'package:rathna/view/screens/Login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +19,13 @@ void main() {
     ChangeNotifierProvider(create: (context) => Themeprovider()),
     // ChangeNotifierProvider<Authprovider>(create: (context) => Authprovider()),
     ChangeNotifierProvider<CoverProvider>(create: (context) => CoverProvider()),
-
     ChangeNotifierProvider<ReturnProvider>(
         create: (context) => ReturnProvider()),
-
     ChangeNotifierProvider<LrupdateProvider>(
         create: (context) => LrupdateProvider()),
-    // ChangeNotifierProvider<UserProvider>(create: (context) => UserProvider()),
+    ChangeNotifierProvider<Queryprovider>(create: (context) => Queryprovider()),
+    ChangeNotifierProvider<UserProvider>(create: (context) => UserProvider()),
+    ChangeNotifierProvider<Forgotpassprovider>(create: (context) => Forgotpassprovider()),
   ], child: const MyApp()));
 }
 
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       title: Appconstants.app_name,
       debugShowCheckedModeBanner: false,
       theme: Provider.of<Themeprovider>(context).darktheme ? dark : light,
-      home: COverdatapage(),
+      home: Noddys(),
     );
   }
 }
