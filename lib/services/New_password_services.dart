@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rathna/utils/app_url.dart';
 import 'package:rathna/utils/hover_message.dart';
+import 'package:rathna/view/screens/Login_screen.dart';
 import 'package:rathna/view/screens/Main_home_screen.dart';
 
 class Newpasswordrepo {
@@ -18,7 +19,7 @@ class Newpasswordrepo {
       });
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => MainHomepage()));
+            context, MaterialPageRoute(builder: (_) => Loginscreen()));
         Utils.toastmessage("Password changed successfully");
       } else {
         Utils.toastmessage("Something went wrong");

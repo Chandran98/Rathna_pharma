@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/dummy/home_screen_widget.dart';
 import 'package:rathna/models/LR_update_model.dart';
+import 'package:rathna/provider/User_provider.dart';
+import 'package:rathna/provider/auth_provider.dart';
+import 'package:rathna/theme/colors/color_palette.dart';
 import 'package:rathna/view/screens/covers_page.dart';
 import 'package:rathna/view/screens/home_screen.dart';
 import 'package:rathna/view/screens/profile_screen.dart';
@@ -24,7 +27,10 @@ class _MainHomepageState extends State<MainHomepage>
   @override
   void initState() {
     super.initState();
-   
+     setState(() {
+         Provider.of<UserProvider>(context,listen: false).getApiCall(context);
+          Provider.of<Authprovider>(context,listen: false).customerId;
+      });
 
     tabController = TabController(length: 2, vsync: this);
   }
@@ -60,10 +66,10 @@ class _MainHomepageState extends State<MainHomepage>
                   indicator:  UnderlineTabIndicator(
                       insets:
                           EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-                      borderSide: BorderSide(width: 4, color: primaryTextColor)),
-                  labelColor: Colors.black,
-                  indicatorColor: Colors.black,
-                  unselectedLabelColor: Colors.brown,
+                      borderSide: BorderSide(width: 4, color: purple)),
+                  labelColor: purple,
+                  indicatorColor: purple,
+                  unselectedLabelColor: grey,
                   controller: tabController,
                   // ignore: prefer_const_literals_to_create_immutables
                   tabs: [

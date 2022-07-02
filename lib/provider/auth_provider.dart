@@ -11,6 +11,8 @@ class Authprovider extends ChangeNotifier {
   Loginmodel loginmodel;
   String _customerId = "";
   get customerId => _customerId;
+  String _useridcomm = "";
+  get useridcomm => _useridcomm;
   bool _status;
   get status => _status;
   bool _loading = false;
@@ -38,8 +40,15 @@ class Authprovider extends ChangeNotifier {
 
         loginmodel = Loginmodel.fromJson(res);
         pref.setBool("status", loginmodel.status);
+        pref.setString("userid", loginmodel.customerId);
         _customerId = loginmodel.customerId;
         _status = loginmodel.status;
+        _useridcomm=
+        pref.getString("userid",);
+        print(
+        pref.getString("userid",));
+
+
         notifyListeners();
         if (loginmodel.status == true) {
           Navigator.pushReplacement(
@@ -76,5 +85,15 @@ class Prefservice {
     // ignore: non_constant_identifier_names
     var ID = pref.getBool("status");
     return ID;
+  }
+  Future setuserid(userid) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("userid", userid);
+  }
+  Future getuserid(userid) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    // ignore: non_constant_identifier_names
+    var userID = pref.getString("userid");
+    return userID;
   }
 }

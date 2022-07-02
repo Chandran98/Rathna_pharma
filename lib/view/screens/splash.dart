@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/services/auth_services.dart';
 import 'package:rathna/view/screens/Login_screen.dart';
@@ -21,6 +22,9 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     
     prefservice.getstatus("status").then((value) {
+      setState(() {
+     Provider.of<Authprovider>(context,listen: false);
+      });
       print(value);
       if (value == true) {
         return Timer(const Duration(seconds: 2),(() => 
@@ -39,7 +43,7 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Center(
-        child: Image.asset('assets/images/rathna.jpg'),
+        child: Image.asset('assets/images/rathna.jpg',scale: 2.5,),
       ),
     );
   }

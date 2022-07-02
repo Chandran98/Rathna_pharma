@@ -8,6 +8,7 @@ import 'package:rathna/view/screens/Lr_update_details_page.dart';
 import 'package:rathna/view/screens/Returns_page.dart';
 import 'package:rathna/view/screens/covers_page.dart';
 import 'package:rathna/view/screens/query_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../provider/theme_provider.dart';
 import '../../services/auth_services.dart';
 
@@ -17,26 +18,29 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  
-    @override
-    void initState() {
-      super.initState();
-      setState(() {
-        
-      });
-      Provider.of<UserProvider>(context,listen: false).getApiCall(context);
-    }
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      Provider.of<UserProvider>(context, listen: false).getApiCall(context);
+      Provider.of<Authprovider>(context, listen: false);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Prefservice prefservice = Prefservice();
     var theme = Provider.of<Themeprovider>(context);
-    var userprovider = Provider.of<UserProvider>(context,listen: false);
+    var userprovider = Provider.of<UserProvider>(context, listen: false);
+    var authprovider = Provider.of<Authprovider>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -46,14 +50,15 @@ class _HomescreenState extends State<Homescreen> {
                         "assets/images/rathna.jpg",
                       ),
                     ),
-                     Text(
-                      "User no. : ${ userprovider.customerid}",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    Text(
+                      "User no. : ${userprovider.customerid}",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     )
                   ],
                 ),
               ),
-        
+
               // InkWell(
               //     onTap: () {
               //       Navigator.pushReplacement(
@@ -62,34 +67,47 @@ class _HomescreenState extends State<Homescreen> {
               //     child: Text("data"))
               // Huik(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,),
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [const Text(
-                            "Profile",
-                            style:
-                                 TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
-                          ),spacedh10,
-                           Text(
-                            "User name. : ${ userprovider.name}",
-                            style:
-                                 TextStyle(fontSize: 16,color: grey),
-                          ),  Text(
-                        "Customer ID : ${ userprovider.customerid}",
-                        style:
-                            TextStyle(fontSize: 16,color: grey),
-                      ),  Text(
-                        "Cusotmer email:${ userprovider.email}",
-                        style:
-                             TextStyle(fontSize: 16,color: grey),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
                       ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Profile",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500),
+                          ),
+                          spacedh10,
+                          Text(
+                            "User name. : ${userprovider.name}",
+                            style: TextStyle(fontSize: 16, color: grey),
+                          ),
+                          Text(
+                            "Customer ID : ${userprovider.customerid}",
+                            style: TextStyle(fontSize: 16, color: grey),
+                          ),Text(
+                            "Customer ID : ${authprovider.useridcomm}",
+                            style: TextStyle(fontSize: 16, color: grey),
+                          ),
+                          Text(
+                            "Cusotmer email:${userprovider.email}",
+                            style: TextStyle(fontSize: 16, color: grey),
+                          ),
+                          // Text(
+                          //   "Customer ID : ${prefservice.getuserid("userid")}",
+                          //   style: TextStyle(fontSize: 16, color: grey),
+                          // ),
                         ],
                       ),
-                    ),spacedh20,
+                    ),
+                    spacedh20,
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
@@ -137,7 +155,8 @@ class _HomescreenState extends State<Homescreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Lrupdatepage()));
+                                    builder: (context) =>
+                                        const Lrupdatepage()));
                           },
                           title: "Lr-Update",
                           subtitle: "services",
@@ -234,9 +253,11 @@ class Card1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   spacedh20,
-                  Text(title, style: const TextStyle(color: black, fontSize: 20)),
+                  Text(title,
+                      style: const TextStyle(color: black, fontSize: 20)),
                   spacedh10,
-                  Text(subtitle, style: const TextStyle(color: grey, fontSize: 16)),
+                  Text(subtitle,
+                      style: const TextStyle(color: grey, fontSize: 16)),
                 ],
               ),
             ),

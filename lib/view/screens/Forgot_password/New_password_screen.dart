@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/provider/forgot_pass_provider.dart';
 import 'package:rathna/services/New_password_services.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
-
 import '../../../theme/colors/textstyle.dart';
 
 class NewPasswordscreen extends StatelessWidget {
