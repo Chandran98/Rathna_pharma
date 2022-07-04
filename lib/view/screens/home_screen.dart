@@ -9,8 +9,6 @@ import 'package:rathna/view/screens/Returns_page.dart';
 import 'package:rathna/view/screens/covers_page.dart';
 import 'package:rathna/view/screens/query_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../provider/theme_provider.dart';
-import '../../services/auth_services.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -18,21 +16,38 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  // final Prefservice prefservice = Prefservice();
+  final Userprefservice userprefservice=Userprefservice();
+  // ignore: prefer_typing_uninitialized_variables
+
   @override
   void initState() {
     super.initState();
     setState(() {
       Provider.of<UserProvider>(context, listen: false).getApiCall(context);
       Provider.of<Authprovider>(context, listen: false);
+      getuserid();
+    });
+  }
+
+  var userid = "";
+  var useremail = "";
+  var usercity = "";
+  var username = "";
+
+  getuserid() async {
+    var prefservice = await SharedPreferences.getInstance();
+    var userprefservice=await SharedPreferences.getInstance();
+    setState(() {
+      userid = prefservice.getString("userid");
+      useremail=userprefservice.getString("useremail");
+      username=userprefservice.getString("username");
+      usercity=userprefservice.getString("usercity");
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final Prefservice prefservice = Prefservice();
-    var theme = Provider.of<Themeprovider>(context);
-    var userprovider = Provider.of<UserProvider>(context, listen: false);
-    var authprovider = Provider.of<Authprovider>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -51,21 +66,13 @@ class _HomescreenState extends State<Homescreen> {
                       ),
                     ),
                     Text(
-                      "User no. : ${userprovider.customerid}",
+                      "User no. : $userid",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     )
                   ],
                 ),
               ),
-
-              // InkWell(
-              //     onTap: () {
-              //       Navigator.pushReplacement(
-              //           context, MaterialPageRoute(builder: (_) => Testingno()));
-              //     },
-              //     child: Text("data"))
-              // Huik(),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -86,19 +93,17 @@ class _HomescreenState extends State<Homescreen> {
                           ),
                           spacedh10,
                           Text(
-                            "User name. : ${userprovider.name}",
-                            style: TextStyle(fontSize: 16, color: grey),
+                            "User name. : $username",
+                            style: const TextStyle(fontSize: 16, color: grey),
                           ),
                           Text(
-                            "Customer ID : ${userprovider.customerid}",
-                            style: TextStyle(fontSize: 16, color: grey),
-                          ),Text(
-                            "Customer ID : ${authprovider.useridcomm}",
-                            style: TextStyle(fontSize: 16, color: grey),
+                            "Customer ID : $userid",
+                            style: const TextStyle(fontSize: 16, color: grey),
                           ),
+                         
                           Text(
-                            "Cusotmer email:${userprovider.email}",
-                            style: TextStyle(fontSize: 16, color: grey),
+                            "Cusotmer email:$useremail",
+                            style: const TextStyle(fontSize: 16, color: grey),
                           ),
                           // Text(
                           //   "Customer ID : ${prefservice.getuserid("userid")}",

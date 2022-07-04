@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:rathna/models/Query_model.dart';
 import 'package:rathna/utils/app_url.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/hover_message.dart';
 
 class Queryprovider extends ChangeNotifier {
@@ -14,16 +14,16 @@ class Queryprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Queryresponse> queryupload(querryid, query, customerid, contxt) async {
+  Future<Queryresponse> queryupload(querryid, query,  contxt) async {
     setloading(true);
     try {
       final String url = AppURl.queryurl;
-
- 
+  var prefservice = await SharedPreferences.getInstance();
+    var userid = prefservice.getString("userid");
       var response = await http.post(Uri.parse(url), body: {
         "querry_id": querryid,
         "querry": query,
-        "customer_id": customerid,
+        "customer_id": userid
         // "querry_status": "0"
       });
       print(response.body);

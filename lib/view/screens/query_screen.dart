@@ -102,9 +102,9 @@ class _QueryscreenState extends State<Queryscreen> {
                     spacedh20,
                     spacedh20,
                     TextFormField(
-                      validator:  MultiValidator([
-                          RequiredValidator(errorText: "usernamenull"),
-                        ]),
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: "usernamenull"),
+                      ]),
                       // maxLines: 5,
                       controller: datacontroller,
                       style: primaryTextStyle(),
@@ -145,11 +145,11 @@ class _QueryscreenState extends State<Queryscreen> {
                             child: TextButton(
                               onPressed: () {
                                 // if (_formkey.currentState.validate()) {
-                                  _queryprovider.queryupload(
-                                      gendertry.toString(),
-                                      querycontroller.text,
-                                      datacontroller.text,
-                                      context);
+                                _queryprovider.queryupload(
+                                    gendertry.toString(),
+                                    querycontroller.text,
+                                   
+                                    context);
                                 //   querycontroller.clear();
                                 //   datacontroller.clear();
                                 // }

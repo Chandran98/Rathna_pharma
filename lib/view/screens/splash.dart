@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
-import 'package:rathna/services/auth_services.dart';
 import 'package:rathna/view/screens/Login_screen.dart';
 import 'package:rathna/view/screens/Main_home_screen.dart';
 import 'package:rathna/view/screens/home_screen.dart';
@@ -20,20 +19,23 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   void initState() {
-    
-    prefservice.getstatus("status").then((value) {
+    prefservice.getstatus("status").then((value) async {
+      var data = await prefservice.getuserid("userid");
+      print(data);
       setState(() {
-     Provider.of<Authprovider>(context,listen: false);
+        Provider.of<Authprovider>(context, listen: false);
       });
       print(value);
       if (value == true) {
-        return Timer(const Duration(seconds: 2),(() => 
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => MainHomepage()))));
+        return Timer(
+            const Duration(seconds: 2),
+            (() => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => MainHomepage()))));
       } else {
-          return Timer(const Duration(seconds: 2),(() => 
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => Loginscreen()))));
+        return Timer(
+            const Duration(seconds: 2),
+            (() => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => Loginscreen()))));
       }
     });
     super.initState();
@@ -41,9 +43,12 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
-        child: Image.asset('assets/images/rathna.jpg',scale: 2.5,),
+        child: Image.asset(
+          'assets/images/rathna.jpg',
+          scale: 2.5,
+        ),
       ),
     );
   }

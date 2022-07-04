@@ -43,11 +43,12 @@ class Authprovider extends ChangeNotifier {
         pref.setString("userid", loginmodel.customerId);
         _customerId = loginmodel.customerId;
         _status = loginmodel.status;
-        _useridcomm=
-        pref.getString("userid",);
-        print(
-        pref.getString("userid",));
-
+        _useridcomm = pref.getString(
+          "userid",
+        );
+        print(pref.getString(
+          "userid",
+        ));
 
         notifyListeners();
         if (loginmodel.status == true) {
@@ -69,6 +70,9 @@ class Authprovider extends ChangeNotifier {
   }
 }
 
+
+
+
 class Prefservice {
   Future setstatus(status) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -86,10 +90,12 @@ class Prefservice {
     var ID = pref.getBool("status");
     return ID;
   }
+
   Future setuserid(userid) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString("userid", userid);
   }
+
   Future getuserid(userid) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // ignore: non_constant_identifier_names

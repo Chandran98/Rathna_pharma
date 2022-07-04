@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/provider/Lr_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Lrupdatepage extends StatefulWidget {
   const Lrupdatepage({Key key}) : super(key: key);
@@ -15,6 +16,7 @@ class _LrupdatepageState extends State<Lrupdatepage> {
   void initState() {
     super.initState();
     Provider.of<LrupdateProvider>(context, listen: false).getApiCall(context);
+  
   }
 
   @override
