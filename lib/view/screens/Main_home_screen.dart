@@ -7,7 +7,6 @@ import 'package:rathna/models/LR_update_model.dart';
 import 'package:rathna/provider/User_provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
-import 'package:rathna/view/screens/covers_page.dart';
 import 'package:rathna/view/screens/home_screen.dart';
 import 'package:rathna/view/screens/profile_screen.dart';
 
