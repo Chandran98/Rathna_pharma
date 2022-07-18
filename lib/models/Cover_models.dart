@@ -10,7 +10,7 @@ String coverdataToJson(Coverdata data) => json.encode(data.toJson());
 
 class Coverdata {
     Coverdata({
-        this.coverData,
+         this.coverData,
     });
 
     List<CoverDatum> coverData;
@@ -26,16 +26,16 @@ class Coverdata {
 
 class CoverDatum {
     CoverDatum({
-        this.noOfData,
-        this.type,
-        this.courierNo,
-        this.companyName,
-        this.customerName,
-        this.customerCity,
-        this.customerId,
-        this.comments,
-        this.transportName,
-        this.createdDate,
+       this.noOfData,
+       this.type,
+       this.courierNo,
+       this.companyName,
+       this.customerName,
+       this.customerCity,
+       this.customerId,
+       this.comments,
+       this.transportName,
+       this.createdDate,
     });
 
     String noOfData;

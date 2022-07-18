@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/constants.dart';
 
@@ -52,11 +53,11 @@ TextStyle primaryTextStyle({
   Color backgroundColor,
   double height,
 }) {
-  return TextStyle(
+  return GoogleFonts.poppins(
     fontSize: size != null ? size.toDouble() : textPrimarySizeGlobal,
     color: color ?? textPrimaryColorGlobal,
     fontWeight: weight ?? fontWeightPrimaryGlobal,
-    fontFamily: fontFamily ?? fontFamilyPrimaryGlobal,
+    // fontFamily: fontFamily ?? fontFamilyPrimaryGlobal,
     letterSpacing: letterSpacing,
     fontStyle: fontStyle,
     decoration: decoration,
@@ -85,11 +86,11 @@ TextStyle secondaryTextStyle({
   Color backgroundColor,
   double height,
 }) {
-  return TextStyle(
+  return GoogleFonts.poppins(
     fontSize: size != null ? size.toDouble() : textSecondarySizeGlobal,
     color: color ?? textSecondaryColorGlobal,
     fontWeight: weight ?? fontWeightSecondaryGlobal,
-    fontFamily: fontFamily ?? fontFamilySecondaryGlobal,
+    // fontFamily: fontFamily ?? fontFamilySecondaryGlobal,
     letterSpacing: letterSpacing,
     fontStyle: fontStyle,
     decoration: decoration,

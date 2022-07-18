@@ -35,6 +35,9 @@ dependencies:
   flutter_swiper: 
   flutter_feather_icons: ^2.0.0+1
   form_field_validator:
+  google_fonts:
+  connectivity_plus:
+  awesome_dialog:
 
 
 dev_dependencies:
@@ -51,11 +54,11 @@ flutter:
     - assets/fonts/
 
   fonts:
-    - family: Rubik
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/Rubik-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 400
-        - asset: assets/fonts/Rubik-Medium.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Rubik-Bold.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700

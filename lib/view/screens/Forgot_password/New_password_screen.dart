@@ -71,7 +71,7 @@ class NewPasswordscreen extends StatelessWidget {
                   
                   child: Material(
                   borderRadius: BorderRadius.circular(12.0),
-                  color: purple,
+                  color: kPrimaryColor,
                   elevation: 7.0,
                     child: TextButton(
                       // ignore: void_checks

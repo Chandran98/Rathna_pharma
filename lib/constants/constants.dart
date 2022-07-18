@@ -69,6 +69,7 @@ ShapeBorder defaultDialogShape;
 // ignore: non_constant_identifier_names
 
 // height //
+var spacedh5 = const SizedBox(height: 5);
 var spacedh10 = const SizedBox(height: 10);
 var spacedh20 = const SizedBox(height: 20);
 var spacedh30 = const SizedBox(height: 30);
@@ -79,3 +80,30 @@ var spacedw10 = const SizedBox(width: 10);
 var spacedw20 = const SizedBox(width: 20);
 var spacedw30 = const SizedBox(width: 30);
 var spacedw40 = const SizedBox(width: 40);
+
+
+const kPrimaryColor = Color(0xff6849ef);
+const kPrimaryLight = Color(0xff8a72f1);
+
+
+///  size  ///
+const kBottomNavigationBarItemSize = 24.0;
+const kCategoryCardImageSize = 120.0;
+
+
+/// icons  ///
+ 
+ const _path = 'assets/icons';
+
+const icFeatured = '$_path/star.png';
+const icFeaturedOutlined = '$_path/star_outlined.png';
+const icLearning = '$_path/play.png';
+const icLearningOutlined = '$_path/play_outlined.png';
+const icWishlist = '$_path/heart.png';
+const icWishlistOutlined = '$_path/heart_outlined.png';
+const icSetting = '$_path/settings.png';
+const icSettingOutlined = '$_path/settings_outlined.png';
+const icDone = '$_path/done.png';
+const icLock = '$_path/lock.png';
+const icPlayNext = '$_path/play_next.png';
+const icPause = '$_path/pause.png';

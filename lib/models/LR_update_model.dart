@@ -3,6 +3,7 @@
 //     final lrupdate = lrupdateFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:ffi';
 
 Lrupdate lrupdateFromJson(String str) => Lrupdate.fromJson(json.decode(str));
 
@@ -10,7 +11,7 @@ String lrupdateToJson(Lrupdate data) => json.encode(data.toJson());
 
 class Lrupdate {
     Lrupdate({
-        this.lrupdateData,
+    this.lrupdateData,
     });
 
     List<LrupdateDatum> lrupdateData;

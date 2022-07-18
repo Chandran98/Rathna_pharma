@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rathna/models/login_model.dart';
 import 'package:rathna/utils/app_url.dart';
 import 'package:rathna/view/screens/Main_home_screen.dart';
@@ -53,7 +52,7 @@ class Authprovider extends ChangeNotifier {
         notifyListeners();
         if (loginmodel.status == true) {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => MainHomepage()));
+              context, MaterialPageRoute(builder: (_) => BaseScreen()));
         } else {
           Utils.toastmessage("Invalid credentials");
         }
@@ -61,9 +60,10 @@ class Authprovider extends ChangeNotifier {
 
         // Utils.toastmessage(response.data.toString());
       } else {
-        print("error");
+        Utils.toastmessage("Invalid credentials");
       }
     } catch (e) {
+      Utils.toastmessage("Invalid credentials");
       setloading(false);
       print(e.toString());
     }

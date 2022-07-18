@@ -7,6 +7,7 @@ class LoggingInterceptor extends InterceptorsWrapper {
   Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     print("--> ${options.method} ${options.path}");
     print("Headers: ${options.headers.toString()}");
+    // ignore: avoid_print
     print("<-- END HTTP");
 
     return super.onRequest(options, handler);
@@ -33,6 +34,7 @@ class LoggingInterceptor extends InterceptorsWrapper {
       print(response.data);
     }
 
+    // ignore: avoid_print
     print("<-- END HTTP");
 
     return super.onResponse(response, handler);

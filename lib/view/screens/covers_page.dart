@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/provider/Lr_provider.dart';
 import 'package:rathna/provider/cover_provider.dart';
+import 'package:rathna/utils/list_title_widget.dart';
 
 class Coverpage extends StatefulWidget {
   const Coverpage({Key key}) : super(key: key);
@@ -21,78 +22,86 @@ class _CoverpageState extends State<Coverpage> {
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<CoverProvider>(context);
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Cover's "),
-        ),
-        body: ListView.builder(
-            itemCount: data.models.length,
-            itemBuilder: (ctx, index) {
-              return Card(
-                  child: ExpansionTile(
-                      subtitle: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Courier No."),
-                          Text(data.models[index].coverData[index].courierNo),
-                        ],
-                      ),
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Comments"),
-                          Text(data.models[index].coverData[index].comments),
-                        ],
-                      ),
-                      children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text("Cover's "),
+            backgroundColor: kPrimaryColor,
+          ),
+          body: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: data.models.length,
+              itemBuilder: (ctx, index) {
+                var jsondata = data.models[index].coverData[index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                      child: ExpansionTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Courier No."),
+                              Text(
+                                jsondata.courierNo,
+                              ),
+                            ],
+                          ),
+                          subtitle: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Created-Date"),
+                              Text(jsondata.createdDate.toIso8601String()),
+                            ],
+                          ),
                           children: [
-                          spacedh10,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text("Company name"),
-                                Text(data
-                                    .models[index].coverData[index].companyName
-                                    .toString()),
-                              ],
-                            ),
-                           spacedh10,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Transport"),
-                                Text(data.models[index].coverData[index].transportName),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(data
-                                .models[index].coverData[index].customerCity),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(data
-                                .models[index].coverData[index].customerId),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(data.models[index].coverData[index]
-                                .customerName),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(data.models[index].coverData[index].createdDate.timeZoneName                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ]),
-                    )
-                  ]));
-            }));
+                                Listname(
+                                  caption: "Company name",
+                                  name: data.models[index].coverData[index]
+                                      .companyName
+                                      .toString(),
+                                ),
+                                Listname(
+                                  caption: "Transport Name",
+                                  name: data.models[index].coverData[index]
+                                      .transportName
+                                      .toString(),
+                                ),
+                                Listname(
+                                  caption: "Company Id",
+                                  name: data
+                                      .models[index].coverData[index].customerId
+                                      .toString(),
+                                ),
+                                Listname(
+                                  caption: "Company city",
+                                  name: data.models[index].coverData[index]
+                                      .customerCity
+                                      .toString(),
+                                ),
+                                Listname(
+                                  caption: "Comments",
+                                  name: data
+                                      .models[index].coverData[index].comments
+                                      .toString(),
+                                ),
+                                Listname(
+                                  caption: "Type",
+                                  name: data.models[index].coverData[index].type
+                                      .toString(),
+                                ),
+                              ]),
+                        )
+                      ])),
+                );
+              })),
+    );
   }
 }
+
+

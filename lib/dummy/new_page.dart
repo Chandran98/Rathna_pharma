@@ -21,23 +21,25 @@ class _COverdatapageState extends State<COverdatapage> {
     final data = Provider.of<LrupdateProvider>(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text("LR-Update"),
+          title: const Text("LR-Update"),
         ),
         body: ListView.builder(
             itemCount: data.models.length,
             itemBuilder: (ctx, index) {
               return Card(
                   child: ExpansionTile(
-                    subtitle: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ Text("ChequeNo."),
-                          Text(
-                              data.models[index].lrupdateData[index].chequeNo),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text("ChequeNo."),
+                          Text(data.models[index].lrupdateData[index].chequeNo),
                         ],
-                      ), 
-                      title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ Text("LR - No."),
-                          Text(
-                              data.models[index].lrupdateData[index].lrNo),
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text("LR - No."),
+                          Text(data.models[index].lrupdateData[index].lrNo),
                         ],
                       ),
                       children: [
@@ -46,56 +48,55 @@ class _COverdatapageState extends State<COverdatapage> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                
-                                Text("LR - Date"),
+                                const Text("LR - Date"),
                                 Text(data
                                     .models[index].lrupdateData[index].lrDate
                                     .toString()),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
-                            ),Row(
+                            ),
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                
-                                Text("cheque No"),
-                            Text(data
-                                .models[index].lrupdateData[index].chequeNo),
+                                const Text("cheque No"),
+                                Text(data.models[index].lrupdateData[index]
+                                    .chequeNo),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(data
                                 .models[index].lrupdateData[index].ewayBillNo),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(data
                                 .models[index].lrupdateData[index].customerId),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(data.models[index].lrupdateData[index]
                                 .customerName),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(data.models[index].lrupdateData[index]
                                 .bookingPerson),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(data.models[index].lrupdateData[index]
                                 .invoiceNumber),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ]),

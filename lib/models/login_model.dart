@@ -7,10 +7,10 @@ String loginmodelToJson(Loginmodel data) => json.encode(data.toJson());
 
 class Loginmodel {
   Loginmodel({
-    this.status,
-    this.message,
-    this.customerId,
-    this.customerEmail,
+  this.status,
+ this.message,
+ this.customerId,
+ this.customerEmail,
   });
 
   bool status;

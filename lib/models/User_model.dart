@@ -7,12 +7,12 @@ String userprofilemodelToJson(Userprofilemodel data) => json.encode(data.toJson(
 
 class Userprofilemodel {
     Userprofilemodel({
-        this.noOfData,
-        this.customerId,
-        this.customerName,
-        this.customerEmail,
-        this.customerCity,
-        this.customerStatus,
+       this.noOfData,
+       this.customerId,
+       this.customerName,
+       this.customerEmail,
+       this.customerCity,
+       this.customerStatus,
     });
 
     String noOfData;

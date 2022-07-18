@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:rathna/theme/colors/color_palette.dart';
 
+import '../theme/colors/color_palette.dart';
 Color primaryTextColor = const Color(0xFF414C6B);
 Color secondaryTextColor = const Color(0xFFE4979E);
 Color titleTextColor = Colors.white;
@@ -288,10 +287,12 @@ final List<Categorylist> categorylist = [
   Categorylist(
       categorypageimages: 'assets/images/Lr_update.jpg',
       categorytitle: 'Lr Update',
-      index: 1),  Categorylist(
+      index: 1),
+  Categorylist(
       categorypageimages: 'assets/images/Covers.jpg',
       categorytitle: 'Outward Cover',
-      index: 2),  Categorylist(
+      index: 2),
+  Categorylist(
       categorypageimages: 'assets/images/Returns.jpg',
       categorytitle: 'Returns',
       index: 3)

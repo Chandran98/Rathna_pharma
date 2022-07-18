@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/view/screens/Login_screen.dart';
 import 'package:rathna/view/screens/Main_home_screen.dart';
-import 'package:rathna/view/screens/home_screen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key key}) : super(key: key);
@@ -30,7 +29,7 @@ class _SplashscreenState extends State<Splashscreen> {
         return Timer(
             const Duration(seconds: 2),
             (() => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => MainHomepage()))));
+                context, MaterialPageRoute(builder: (_) => BaseScreen()))));
       } else {
         return Timer(
             const Duration(seconds: 2),
@@ -46,7 +45,7 @@ class _SplashscreenState extends State<Splashscreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/images/rathna.jpg',
+          'assets/images/rathna.png',
           scale: 2.5,
         ),
       ),

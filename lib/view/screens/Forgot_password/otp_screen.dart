@@ -32,7 +32,7 @@ class _OTPscreenState extends State<OTPscreen> {
             backgroundColor: white,
             elevation: 0,
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {Navigator.of(context).pop();},
               icon: const Icon(
                 Icons.arrow_back,
                 color: black,
@@ -92,7 +92,7 @@ class _OTPscreenState extends State<OTPscreen> {
                   
                   child: Material(
                   borderRadius: BorderRadius.circular(12.0),
-                  color: purple,
+                  color: kPrimaryColor,
                   elevation: 7.0,
                     child: TextButton(
                       // ignore: void_checks

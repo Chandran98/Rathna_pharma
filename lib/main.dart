@@ -11,10 +11,9 @@ import 'package:rathna/provider/theme_provider.dart';
 import 'package:rathna/theme/dark_theme.dart';
 import 'package:rathna/theme/light_theme.dart';
 import 'package:rathna/utils/app_constants.dart';
-import 'package:rathna/view/base/Nod_.dart';
-import 'package:rathna/view/screens/Login_screen.dart';
-import 'package:rathna/view/screens/Main_home_screen.dart';
 import 'package:rathna/view/screens/splash.dart';
+
+import 'helper/Internet connectivity/connectivity.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,11 @@ void main() {
         create: (context) => LrupdateProvider()),
     ChangeNotifierProvider<Queryprovider>(create: (context) => Queryprovider()),
     ChangeNotifierProvider<UserProvider>(create: (context) => UserProvider()),
-    ChangeNotifierProvider<Forgotpassprovider>(create: (context) => Forgotpassprovider()),
+    ChangeNotifierProvider<Forgotpassprovider>(
+        create: (context) => Forgotpassprovider()),
+    StreamProvider<ConnectivityStatus>(
+        create: (_) => ConnectivityService().streamController.stream,
+        initialData: ConnectivityStatus.Offline)
   ], child: const MyApp()));
 }
 

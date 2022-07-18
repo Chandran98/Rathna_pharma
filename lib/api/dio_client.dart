@@ -21,7 +21,7 @@ class DioClient {
     this.sharedPreferences,
   }) {
     token = sharedPreferences.getString(Appconstants.Token);
-     print(token);
+    print(token);
     dio = dioC ?? Dio();
     dio
       ..options.baseUrl = baseUrl
@@ -56,7 +56,7 @@ class DioClient {
     } on FormatException catch (_) {
       throw FormatException("Unable to process the data");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -86,10 +86,8 @@ class DioClient {
       throw e;
     }
   }
-  
 
   Future<Response> put(
-    
     String uri, {
     data,
     Map<String, dynamic> queryParameters,
@@ -138,5 +136,4 @@ class DioClient {
       throw e;
     }
   }
-  
 }

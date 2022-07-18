@@ -10,9 +10,9 @@ String forgotpassmodelToJson(Forgotpassmodel data) => json.encode(data.toJson())
 
 class Forgotpassmodel {
     Forgotpassmodel({
-        this.status,
-        this.otp,
-        this.message
+     this.status,
+     this.otp,
+     this.message
     });
 
     bool status;

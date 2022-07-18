@@ -26,18 +26,18 @@ class Returndata {
 
 class ReturnsDatum {
     ReturnsDatum({
-        this.noOfData,
-        this.type,
-        this.courierNo,
-        this.customerName,
-        this.customerId,
-        this.noOfBoxes,
-        this.lrDate,
-        this.companyName,
-        this.transportName,
-        this.customerCity,
-        this.boxNo,
-        this.createdDate,
+     this.noOfData,
+     this.type,
+     this.courierNo,
+     this.customerName,
+     this.customerId,
+     this.noOfBoxes,
+     this.lrDate,
+     this.companyName,
+     this.transportName,
+     this.customerCity,
+     this.boxNo,
+     this.createdDate,
     });
 
     String noOfData;
