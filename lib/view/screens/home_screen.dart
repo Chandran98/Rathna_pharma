@@ -98,7 +98,7 @@ class Body extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  "See All",
+                  "",
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium

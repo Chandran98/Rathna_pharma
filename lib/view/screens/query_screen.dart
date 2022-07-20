@@ -5,6 +5,8 @@ import 'package:rathna/provider/query_provider.dart';
 import 'package:rathna/services/query_services.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
 import 'package:rathna/theme/colors/textstyle.dart';
+import 'package:rathna/utils/app_services.dart';
+import 'package:rathna/utils/hover_message.dart';
 import '../../provider/theme_provider.dart';
 
 class Queryscreen extends StatefulWidget {
@@ -23,7 +25,7 @@ class _QueryscreenState extends State<Queryscreen> {
   }
 
   // ignore: prefer_typing_uninitialized_variables
-  var gendertry;
+  var servicename;
   List genderlist = ["LR-Update", "Covers", "Returns"];
   TextEditingController querycontroller = TextEditingController();
   TextEditingController datacontroller = TextEditingController();
@@ -46,6 +48,7 @@ class _QueryscreenState extends State<Queryscreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
                 child: Form(
+                  key: _formkey,
                   child: Column(
                     children: [
                       SizedBox(
@@ -80,10 +83,10 @@ class _QueryscreenState extends State<Queryscreen> {
                           }).toList(),
                           onChanged: (selected) {
                             setState(() {
-                              gendertry = selected;
+                              servicename = selected;
                             });
                           },
-                          value: gendertry,
+                          value: servicename,
                         ),
                       ),
                       spacedh20,
@@ -136,10 +139,21 @@ class _QueryscreenState extends State<Queryscreen> {
                               elevation: 7.0,
                               child: TextButton(
                                 onPressed: () {
-                                  _queryprovider.queryupload(
-                                      gendertry.toString(),
-                                      querycontroller.text,
-                                      context);
+                                  if (_formkey.currentState.validate()) {
+                                    Appservies()
+                                        .checkInternet()
+                                        .then((connection) async {
+                                      if (connection == false) {
+                                        Utils.toastmessage(
+                                            "No internet connection");
+                                      } else {
+                                        _queryprovider.queryupload(
+                                            servicename.toString(),
+                                            querycontroller.text,
+                                            context);
+                                      }
+                                    });
+                                  }
                                 },
                                 child: const Center(
                                     child: Text('Submit',

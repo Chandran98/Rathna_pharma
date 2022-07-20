@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/provider/Lr_provider.dart';
 import 'package:rathna/provider/User_provider.dart';
+import 'package:rathna/provider/all_query_provider.dart';
 import 'package:rathna/provider/auth_provider.dart';
 import 'package:rathna/provider/cover_provider.dart';
 import 'package:rathna/provider/forgot_pass_provider.dart';
@@ -20,6 +21,8 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => Themeprovider()),
     ChangeNotifierProvider<Authprovider>(create: (context) => Authprovider()),
+    ChangeNotifierProvider<AllqueryProvider>(
+        create: (context) => AllqueryProvider()),
     ChangeNotifierProvider<CoverProvider>(create: (context) => CoverProvider()),
     ChangeNotifierProvider<ReturnProvider>(
         create: (context) => ReturnProvider()),

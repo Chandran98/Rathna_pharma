@@ -103,7 +103,15 @@ class _SettingscreenState extends State<Settingscreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: kPrimaryColor,
-              elevation: 0,
+              elevation: 0,leading: IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => BaseScreen()));
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: white,
+                    )),
               title: const Text(
                 "Profile",
               ),
@@ -161,7 +169,7 @@ class _SettingscreenState extends State<Settingscreen> {
                 ),
                 spacedh10,
                 ListTile(
-                    title: const Text('Dark mode'),
+                    title:  Text('Dark mode',style: GoogleFonts.poppins(),),
                     leading: Container(
                       height: 30,
                       width: 30,
@@ -241,7 +249,7 @@ class Listtilewidget extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          title: Text(title),
+          title: Text(title,style: GoogleFonts.poppins(),),
           leading: Container(
             height: 30,
             width: 30,

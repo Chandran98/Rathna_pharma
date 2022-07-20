@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/provider/User_provider.dart';
@@ -9,15 +8,20 @@ class Noddys extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var userprovider = Provider.of<UserProvider>(context,);
+    var userprovider = Provider.of<UserProvider>(
+      context,
+    );
     return Scaffold(
         body: Center(
-      child: Container(height: 50,width: 180,color: redColor,
+      child: Container(
+        height: 50,
+        width: 180,
+        color: redColor,
         child: InkWell(
             onTap: () {
               userprovider.getApiCall(context);
             },
-            child: Center(child:  Text(userprovider.name))),
+            child: Center(child: Text(userprovider.name))),
       ),
     ));
   }
@@ -28,7 +32,7 @@ class Guide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        var userprovider = Provider.of<UserProvider>(context);
+    var userprovider = Provider.of<UserProvider>(context);
 
     return Scaffold(
       body: Center(

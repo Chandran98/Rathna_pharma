@@ -193,37 +193,6 @@ class _HomescreenState extends State<Homescreen> {
   }
 }
 
-//  Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Container(
-//             height: 30,
-//             width: 30,
-//             decoration: BoxDecoration(
-//                 color: Colors.grey.shade600,
-//                 borderRadius: BorderRadius.circular(5)),
-//             child: const Icon(CupertinoIcons.moon_stars,
-//                 size: 20, color: Colors.white),
-//           ),
-//           Switch(
-//               activeColor: Theme.of(context).primaryColor,
-//               value: Provider.of<Themeprovider>(context).darktheme,
-//               onChanged: (active) {
-//                 Provider.of<Themeprovider>(context, listen: false)
-//                     .toggletheme();
-//               })
-//         ],
-//       ),
-
-//       InkWell(
-//           onTap: () {
-//             prefservice.removestatus("status").then((value) {
-//               Navigator.pushReplacement(context,
-//                   MaterialPageRoute(builder: (_) => Loginscreen()));
-//             });
-//           },
-//           child: Text("Log-out")),
-
 class Card1 extends StatelessWidget {
   String title, image, subtitle;
   VoidCallback ontap;

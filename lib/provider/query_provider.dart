@@ -1,3 +1,4 @@
+// ignore_for_file: missing_return
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:rathna/models/Query_model.dart';
@@ -14,12 +15,15 @@ class Queryprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Queryresponse> queryupload(querryid, query,  contxt) async {
+  Future<Queryresponse> queryupload(querryid, query, contxt) async {
     setloading(true);
     try {
       final String url = AppURl.queryurl;
-  var prefservice = await SharedPreferences.getInstance();
-    var userid = prefservice.getString("userid");
+      print(querryid);
+      print(query);
+      var prefservice = await SharedPreferences.getInstance();
+      var userid = prefservice.getString("userid");
+      print(userid);
       var response = await http.post(Uri.parse(url), body: {
         "querry_id": querryid,
         "querry": query,
@@ -43,4 +47,5 @@ class Queryprovider extends ChangeNotifier {
       print(e.toString());
     }
   }
+
 }

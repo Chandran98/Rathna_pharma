@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import "package:flutter/material.dart";
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,9 @@ class _OTPscreenState extends State<OTPscreen> {
             backgroundColor: white,
             elevation: 0,
             leading: IconButton(
-              onPressed: () {Navigator.of(context).pop();},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               icon: const Icon(
                 Icons.arrow_back,
                 color: black,
@@ -43,17 +44,17 @@ class _OTPscreenState extends State<OTPscreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               spacedh40,
-            Text(
-              "Forgot Password?",
-              style: primaryTextStyle(weight: FontWeight.w600, size: 22),
-            ),
-            spacedh10,
-            Text(
-              "Otp has been sent to your email ${forgotpassprovider.email}",
-              style: secondaryTextStyle(
-                  weight: FontWeight.w600, size: 16, color: lightGrey),
-            ),
+              spacedh40,
+              Text(
+                "Forgot Password?",
+                style: primaryTextStyle(weight: FontWeight.w600, size: 22),
+              ),
+              spacedh10,
+              Text(
+                "Otp has been sent to your email ${forgotpassprovider.email}",
+                style: secondaryTextStyle(
+                    weight: FontWeight.w600, size: 16, color: lightGrey),
+              ),
               spacedh20,
               TextFormField(
                 keyboardType: TextInputType.number,
@@ -86,14 +87,13 @@ class _OTPscreenState extends State<OTPscreen> {
                 // },
               ),
               Padding(
-              padding: const EdgeInsets.only(top: 80.0),
+                padding: const EdgeInsets.only(top: 80.0),
                 child: SizedBox(
                   height: 50,
-                  
                   child: Material(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: kPrimaryColor,
-                  elevation: 7.0,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: kPrimaryColor,
+                    elevation: 7.0,
                     child: TextButton(
                       // ignore: void_checks
                       onPressed: () {
@@ -109,8 +109,10 @@ class _OTPscreenState extends State<OTPscreen> {
                             Utils.toastmessage("valid credentials");
                           }));
                         } else {
-                          return Timer(const Duration(seconds: 2),
-                              (() => Utils.toastmessage("Invalid credentials")));
+                          return Timer(
+                              const Duration(seconds: 2),
+                              (() =>
+                                  Utils.toastmessage("Invalid credentials")));
                         }
                       },
                       child: const Center(
