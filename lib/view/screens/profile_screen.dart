@@ -24,6 +24,54 @@ class Settingscreen extends StatefulWidget {
 
 class _SettingscreenState extends State<Settingscreen> {
   final Prefservice prefservice = Prefservice();
+  void displayAlertDialog1() {
+    var theme = Provider.of<Themeprovider>(context, listen: false);
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: Text(
+          'Logout?',
+          style: GoogleFonts.poppins(
+            color: theme.darktheme ? white : black,
+          ),
+        ),
+        content: Text(
+          'Are you sure want to logout?',
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: theme.darktheme ? white : black,
+          ),
+        ),
+        actions: [
+          CupertinoDialogAction(
+            child:  Text('Cancel',
+                  style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),),
+            onPressed: () {
+               Navigator.of(context).pop();
+            },
+          ),
+          CupertinoDialogAction(
+            child:  Text('Logout',
+               style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),),
+            onPressed: () { Appservies().checkInternet().then((connection) async {
+                      if (connection == false) {
+                        Utils.toastmessage("No internet connection");
+                      } else {
+                        await prefservice.removestatus("status").then((value) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const Loginscreen()));
+                        });
+                      }
+                    });
+            },
+          )
+        ],
+      ),
+    );
+  }
+
   void logout(context) {
     var theme = Provider.of<Themeprovider>(context, listen: false);
     showDialog(
@@ -54,7 +102,7 @@ class _SettingscreenState extends State<Settingscreen> {
                   },
                   child: const Text(
                     "Ok",
-                    style: TextStyle(color: purple),
+                    style: TextStyle(color: kPrimaryColor, fontSize: 16),
                   )),
               TextButton(
                   onPressed: () {
@@ -62,7 +110,7 @@ class _SettingscreenState extends State<Settingscreen> {
                   },
                   child: const Text(
                     "cancel",
-                    style: TextStyle(color: purple),
+                    style: TextStyle(color: kPrimaryColor, fontSize: 16),
                   )),
             ],
           );
@@ -103,15 +151,16 @@ class _SettingscreenState extends State<Settingscreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: kPrimaryColor,
-              elevation: 0,leading: IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => BaseScreen()));
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: white,
-                    )),
+              elevation: 0,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => BaseScreen()));
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: white,
+                  )),
               title: const Text(
                 "Profile",
               ),
@@ -169,7 +218,10 @@ class _SettingscreenState extends State<Settingscreen> {
                 ),
                 spacedh10,
                 ListTile(
-                    title:  Text('Dark mode',style: GoogleFonts.poppins(),),
+                    title: Text(
+                      'Dark mode',
+                      style: GoogleFonts.poppins(),
+                    ),
                     leading: Container(
                       height: 30,
                       width: 30,
@@ -224,7 +276,8 @@ class _SettingscreenState extends State<Settingscreen> {
                     title: "Log out",
                     color: Colors.redAccent,
                     ontap: () {
-                      logout(context);
+                      // logout(context);
+                      displayAlertDialog1();
                     },
                     icon: FeatherIcons.logOut),
               ],
@@ -249,7 +302,10 @@ class Listtilewidget extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          title: Text(title,style: GoogleFonts.poppins(),),
+          title: Text(
+            title,
+            style: GoogleFonts.poppins(),
+          ),
           leading: Container(
             height: 30,
             width: 30,

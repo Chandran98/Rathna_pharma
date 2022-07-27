@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/provider/query_provider.dart';
@@ -100,11 +101,13 @@ class _QueryscreenState extends State<Queryscreen> {
                         },
                         maxLines: 5,
                         controller: querycontroller,
-                        style: primaryTextStyle(),
+                        style: primaryTextStyle(color: theme.darktheme
+                                  ? white
+                                  : black,),
                         // focusNode: emailFocus,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(
-                            Icons.email,
+                            Icons.email,color: kPrimaryColor,
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
@@ -115,6 +118,7 @@ class _QueryscreenState extends State<Queryscreen> {
                               borderSide: const BorderSide(
                                   width: 1, color: Color(0xFFA8ABAD))),
                           labelText: 'Tell your Queries here',
+                          prefixIconColor: kPrimaryColor
                           // labelStyle: primaryTextStyle(),
                         ),
                         //isDarkModeOn ? white : blackColor,

@@ -56,7 +56,7 @@ class _OTPscreenState extends State<OTPscreen> {
                     weight: FontWeight.w600, size: 16, color: lightGrey),
               ),
               spacedh20,
-              TextFormField(
+              TextFormField(obscureText: true,
                 keyboardType: TextInputType.number,
                 validator: MultiValidator([
                   RequiredValidator(errorText: "OTP"),

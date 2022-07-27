@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/utils/button&cont.dart';
@@ -364,12 +365,12 @@ class _AppBarState extends State<AppBar> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Hello  $username",
-                      style: Theme.of(context).textTheme.titleLarge),
-                  spacedh5,
-                  Text("$userid", style: TextStyle(color: white, fontSize: 18)),
+                  // Text("Hello $username",
+                  //     style: GoogleFonts.poppins(color: white,fontSize:17)),
+                  // spacedh5,
+                  Text("Customer ID: $userid", style: TextStyle(color: white, fontSize: 18)),
                 ],
               ),
               CircleButton(

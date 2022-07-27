@@ -8,6 +8,7 @@ import 'package:rathna/helper/Internet%20connectivity/Network_status.dart';
 import 'package:rathna/provider/all_query_provider.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
 import 'package:rathna/utils/list_title_widget.dart';
+import 'package:rathna/utils/process_indicator.dart';
 import 'package:rathna/view/screens/Main_home_screen.dart';
 
 class QueryDetailscreen extends StatefulWidget {
@@ -54,13 +55,13 @@ class _QueryDetailscreenState extends State<QueryDetailscreen> {
                 title: const Text("Queries"),
                 elevation: 0,
               ),
-              body: ListView.builder(
+              body:data.loading?const Indicator(): ListView.builder(
                   itemCount: data.models.length,
                   itemBuilder: (ctx, index) {
                     var jsondata = data.models[index].queryData[index];
                     load() {
                       // ignore: unrelated_type_equality_checks
-                      if (jsondata.querryStatus == 0.toString()) {
+                      if (jsondata.queryStatus == 1.toString()) {
                         return "Resolved";
                       } else {
                         return "Pending";
@@ -73,7 +74,7 @@ class _QueryDetailscreenState extends State<QueryDetailscreen> {
                           child: ExpansionTile(
                               title: Listname(
                                 caption: "Querry Type:",
-                                name: jsondata.querryId.toString(),
+                                name: jsondata.queryType.toString(),
                               ),
                               subtitle: Padding(
                                 padding:
@@ -85,13 +86,13 @@ class _QueryDetailscreenState extends State<QueryDetailscreen> {
                                     const Text("Querry Status:"),
                                     Container(
                                         decoration: BoxDecoration(
-                                            color: jsondata.querryStatus ==
-                                                    0.toString()
+                                            color: jsondata.queryStatus ==
+                                                    1.toString()
                                                 ? greenColor
                                                 : redColor,
                                             border: Border.all(
-                                                color: jsondata.querryStatus ==
-                                                        0.toString()
+                                                color: jsondata.queryStatus ==
+                                                        1.toString()
                                                     ? greenColor
                                                     : redColor,
                                                 width: 1),
@@ -115,7 +116,7 @@ class _QueryDetailscreenState extends State<QueryDetailscreen> {
                               child: SizedBox(
                                 width: double.infinity,
                                 child: Text(
-                                  jsondata.querry,
+                                  jsondata.query,
                                   textAlign: TextAlign.start,
                                   style: GoogleFonts.poppins(fontSize: 14),
                                 ),

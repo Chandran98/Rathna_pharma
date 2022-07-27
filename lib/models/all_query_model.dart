@@ -1,59 +1,57 @@
 // To parse this JSON data, do
 //
-//     final allquerymodel = allquerymodelFromJson(jsonString);
+//     final querymodel = querymodelFromJson(jsonString);
 
 import 'dart:convert';
 
-Allquerymodel allquerymodelFromJson(String str) =>
-    Allquerymodel.fromJson(json.decode(str));
+Querymodel querymodelFromJson(String str) => Querymodel.fromJson(json.decode(str));
 
-String allquerymodelToJson(Allquerymodel data) => json.encode(data.toJson());
+String querymodelToJson(Querymodel data) => json.encode(data.toJson());
 
-class Allquerymodel {
-  Allquerymodel({
-    this.queryData,
-  });
+class Querymodel {
+    Querymodel({
+        this.queryData,
+    });
 
-  List<QueryDatum> queryData;
+    List<QueryDatum> queryData;
 
-  factory Allquerymodel.fromJson(Map<String, dynamic> json) => Allquerymodel(
-        queryData: List<QueryDatum>.from(
-            json["query_data"].map((x) => QueryDatum.fromJson(x))),
-      );
+    factory Querymodel.fromJson(Map<String, dynamic> json) => Querymodel(
+        queryData: List<QueryDatum>.from(json["query_data"].map((x) => QueryDatum.fromJson(x))),
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "query_data": List<dynamic>.from(queryData.map((x) => x.toJson())),
-      };
+    };
 }
 
 class QueryDatum {
-  QueryDatum({
-    this.noOfData,
-    this.querryId,
-    this.querry,
-    this.querryStatus,
-    this.customerId,
-  });
+    QueryDatum({
+        this.noOfData,
+        this.query,
+        this.queryType,
+        this.queryStatus,
+        this.customerId,
+    });
 
-  String noOfData;
-  String querryId;
-  String querry;
-  String querryStatus;
-  String customerId;
+    String noOfData;
+    String query;
+    String queryType;
+    String queryStatus;
+    String customerId;
 
-  factory QueryDatum.fromJson(Map<String, dynamic> json) => QueryDatum(
+    factory QueryDatum.fromJson(Map<String, dynamic> json) => QueryDatum(
         noOfData: json["no_of_data"],
-        querryId: json["querry_id"],
-        querry: json["querry"],
-        querryStatus: json["querry_status"],
+        query: json["query"],
+        queryType: json["query_type"],
+        queryStatus: json["query_status"],
         customerId: json["customer_id"],
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "no_of_data": noOfData,
-        "querry_id": querryId,
-        "querry": querry,
-        "querry_status": querryStatus,
+        "query": query,
+        "query_type": queryType,
+        "query_status": queryStatus,
         "customer_id": customerId,
-      };
+    };
 }

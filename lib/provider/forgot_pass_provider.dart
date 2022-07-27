@@ -11,7 +11,7 @@ class Forgotpassprovider extends ChangeNotifier {
   String _email="";
   get email=>_email;
   get otp => _otp;
-  Future<Forgotpassmodel> forgotpassword(email, context) async {
+  Future<void> forgotpassword(email, context) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     try {
       Response response;

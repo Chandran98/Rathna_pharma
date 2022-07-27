@@ -65,7 +65,7 @@ class NewPasswordscreen extends StatelessWidget {
                 ),
               ),
               Padding(
-              padding: const EdgeInsets.only(top: 80.0),
+              padding: const EdgeInsets.only(top: 50.0),
                 child: SizedBox(
                   height: 50,
                   

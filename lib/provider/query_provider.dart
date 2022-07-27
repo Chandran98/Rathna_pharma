@@ -12,23 +12,23 @@ class Queryprovider extends ChangeNotifier {
 
   setloading(value) {
     _loading = value;
-    notifyListeners();
   }
 
   Future<Queryresponse> queryupload(querryid, query, contxt) async {
     setloading(true);
     try {
       final String url = AppURl.queryurl;
-      print(querryid);
-      print(query);
+      final time = DateTime.now().toString();
+
       var prefservice = await SharedPreferences.getInstance();
       var userid = prefservice.getString("userid");
       print(userid);
       var response = await http.post(Uri.parse(url), body: {
-        "querry_id": querryid,
-        "querry": query,
-        "customer_id": userid
-        // "querry_status": "0"
+        "query_type": querryid,
+        "query": query,
+        "customer_id": userid,
+        "query_status": "0",
+        "created_date": time
       });
       print(response.body);
       if (response.statusCode == 200) {
@@ -44,8 +44,8 @@ class Queryprovider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       setloading(false);
+        Utils.toastmessage("failed");
       print(e.toString());
     }
   }
-
 }

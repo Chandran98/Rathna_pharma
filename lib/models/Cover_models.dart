@@ -1,21 +1,21 @@
 // To parse this JSON data, do
 //
-//     final coverdata = coverdataFromJson(jsonString);
+//     final covermodel = covermodelFromJson(jsonString);
 
 import 'dart:convert';
 
-Coverdata coverdataFromJson(String str) => Coverdata.fromJson(json.decode(str));
+Covermodel covermodelFromJson(String str) => Covermodel.fromJson(json.decode(str));
 
-String coverdataToJson(Coverdata data) => json.encode(data.toJson());
+String covermodelToJson(Covermodel data) => json.encode(data.toJson());
 
-class Coverdata {
-    Coverdata({
-         this.coverData,
+class Covermodel {
+    Covermodel({
+        this.coverData,
     });
 
     List<CoverDatum> coverData;
 
-    factory Coverdata.fromJson(Map<String, dynamic> json) => Coverdata(
+    factory Covermodel.fromJson(Map<String, dynamic> json) => Covermodel(
         coverData: List<CoverDatum>.from(json["cover_data"].map((x) => CoverDatum.fromJson(x))),
     );
 
@@ -26,51 +26,43 @@ class Coverdata {
 
 class CoverDatum {
     CoverDatum({
-       this.noOfData,
-       this.type,
-       this.courierNo,
-       this.companyName,
-       this.customerName,
-       this.customerCity,
-       this.customerId,
-       this.comments,
-       this.transportName,
-       this.createdDate,
+        this.noOfData,
+        this.coverType,
+        this.courierNo,
+        this.companyName,
+        this.customerId,
+        this.comment,
+        this.transportName,
+        this.createdDate,
     });
 
     String noOfData;
-    String type;
+    String coverType;
     String courierNo;
     String companyName;
-    String customerName;
-    String customerCity;
     String customerId;
-    String comments;
+    String comment;
     String transportName;
     DateTime createdDate;
 
     factory CoverDatum.fromJson(Map<String, dynamic> json) => CoverDatum(
         noOfData: json["no_of_data"],
-        type: json["type"],
+        coverType: json["cover_type"],
         courierNo: json["courier_no"],
         companyName: json["company_name"],
-        customerName: json["customer_name"],
-        customerCity: json["customer_city"],
         customerId: json["customer_id"],
-        comments: json["comments"],
+        comment: json["comment"],
         transportName: json["transport_name"],
         createdDate: DateTime.parse(json["created_date"]),
     );
 
     Map<String, dynamic> toJson() => {
         "no_of_data": noOfData,
-        "type": type,
+        "cover_type": coverType,
         "courier_no": courierNo,
         "company_name": companyName,
-        "customer_name": customerName,
-        "customer_city": customerCity,
         "customer_id": customerId,
-        "comments": comments,
+        "comment": comment,
         "transport_name": transportName,
         "created_date": "${createdDate.year.toString().padLeft(4, '0')}-${createdDate.month.toString().padLeft(2, '0')}-${createdDate.day.toString().padLeft(2, '0')}",
     };

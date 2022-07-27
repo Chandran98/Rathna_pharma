@@ -7,20 +7,28 @@ import 'package:rathna/utils/hover_message.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AllqueryProvider with ChangeNotifier {
-  List<Allquerymodel> _models = [];
-  List<Allquerymodel> get models {
+  List<Querymodel> _models = [];
+  List<Querymodel> get models {
     return _models;
   }
 
+  bool _loading = false;
+  get loading => _loading;
+  setloading(value) {
+    _loading = value;
+  }
+
   Future<void> getApiCall(context) async {
+    setloading(true);
     var prefservice = await SharedPreferences.getInstance();
     var userid = prefservice.getString("userid");
     try {
-      List<Allquerymodel> loadData = [];
+      List<Querymodel> loadData = [];
       var response = await http.get(Uri.parse(AppURl.allqueryurl + userid));
       var jsonData = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        var divdata = Allquerymodel.fromJson(jsonData);
+        setloading(false);
+        var divdata = Querymodel.fromJson(jsonData);
 
         for (var i = 0; i < divdata.queryData.length; i++) {
           loadData.add(divdata);
@@ -28,9 +36,14 @@ class AllqueryProvider with ChangeNotifier {
 
         _models = loadData;
         notifyListeners();
-      } else {}
+      } else {
+        Utils.toastmessage("Something went wrong");
+      }
     } catch (e) {
-      Utils.toastmessage("Something went wrong");
+      Utils.toastmessage("No data found");
+      setloading(false);
+      print(e.toString());
+      notifyListeners();
     }
   }
 }
