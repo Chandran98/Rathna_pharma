@@ -13,6 +13,7 @@ import 'package:rathna/view/screens/Main_home_screen.dart';
 import 'package:rathna/view/screens/Returns_page.dart';
 import 'package:rathna/view/screens/covers_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../provider/theme_provider.dart';
 import 'query_screen.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -60,6 +61,19 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
               return Future.value(false);
             },
             child: Scaffold(
+              floatingActionButton: FloatingActionButton.extended(backgroundColor: kPrimaryColor.withOpacity(0.7),
+                label: const Text(
+                  "Quick call",
+                  style: TextStyle(color: white),
+                ),
+                icon: const Icon(
+                  Icons.call,
+                  size: 20,
+                  color: white,
+                ),
+                onPressed: () {
+                  launch("tel: 7448954986");
+                }),
               body: SingleChildScrollView(
                 child: Column(
                   children: const [

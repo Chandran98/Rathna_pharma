@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
@@ -48,25 +49,13 @@ class _CoverpageState extends State<Coverpage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
                             child: ExpansionTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text("Courier No."),
-                                    Text(
-                                      jsondata.courierNo,
-                                    ),
-                                  ],
-                                ),
-                                subtitle: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text("Created-Date"),
-                                    Text(DateFormat("dd-mm-yyyy")
-                                        .format(jsondata.createdDate))
-                                    // Text(jsondata.createdDate.toIso8601String()),
-                                  ],
+                                title: Listname(
+                                    caption: "Courier No.",
+                                    name: jsondata.courierNo),
+                                subtitle: Listname(
+                                  caption: "Created-Date",
+                                  name: DateFormat("dd-mm-yyyy")
+                                      .format(jsondata.createdDate),
                                 ),
                                 children: [
                               Padding(
@@ -76,10 +65,6 @@ class _CoverpageState extends State<Coverpage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      // Listcolname(caption: "Company name",
-                                      //   name: data.models[index].coverData[index]
-                                      //       .companyName
-                                      //       .toString(),),
                                       Listname(
                                         caption: "Company name",
                                         name: data.models[index]
@@ -98,16 +83,12 @@ class _CoverpageState extends State<Coverpage> {
                                             .coverData[index].customerId
                                             .toString(),
                                       ),
-                                      Text("Comments :"),
-                                      Text(data.models[index].coverData[index]
-                                          .comment
-                                          .toString()),
+                                      Listcolname(
+                                          caption: "Comments :",
+                                          name: data.models[index]
+                                              .coverData[index].comment
+                                              .toString()),
                                       spacedh20
-                                      // Listname(
-                                      //   caption: "Company city",
-                                      //   name: data.models[index].coverData[index].comment
-                                      //       .toString(),
-                                      // ),
                                     ]),
                               )
                             ])),

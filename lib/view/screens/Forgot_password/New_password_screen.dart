@@ -28,21 +28,20 @@ class NewPasswordscreen extends StatelessWidget {
             )),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Column(            crossAxisAlignment: CrossAxisAlignment.start,
-
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                 spacedh40,
-            Text(
-              "New Password",
-              style: primaryTextStyle(weight: FontWeight.w600, size: 22),
-            ),
-            spacedh10,
-            Text(
-              "Please enter your newpassword ",
-              style: secondaryTextStyle(
-                  weight: FontWeight.w600, size: 16, color: lightGrey),
-            ),
-          
+              spacedh40,
+              Text(
+                "New Password",
+                style: primaryTextStyle(weight: FontWeight.w600, size: 22),
+              ),
+              spacedh10,
+              Text(
+                "Please enter your newpassword ",
+                style: secondaryTextStyle(
+                    weight: FontWeight.w600, size: 16, color: lightGrey),
+              ),
               spacedh40,
               TextField(
                 // maxLines: 5,
@@ -50,8 +49,7 @@ class NewPasswordscreen extends StatelessWidget {
                 style: primaryTextStyle(),
                 // focusNode: emailFocus,
                 decoration: InputDecoration(
-                  prefixIcon:
-                      const Icon(Icons.lock, color: Color(0xFFA8ABAD)),
+                  prefixIcon: const Icon(Icons.lock, color: Color(0xFFA8ABAD)),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     // borderSide: BorderSide(color: appPrimaryColor)
@@ -65,21 +63,20 @@ class NewPasswordscreen extends StatelessWidget {
                 ),
               ),
               Padding(
-              padding: const EdgeInsets.only(top: 50.0),
+                padding: const EdgeInsets.only(top: 50.0),
                 child: SizedBox(
                   height: 50,
-                  
                   child: Material(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: kPrimaryColor,
-                  elevation: 7.0,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: kPrimaryColor,
+                    elevation: 7.0,
                     child: TextButton(
                       // ignore: void_checks
                       onPressed: () {
-                         Newpasswordrepo().updatepassword(
-                          forgotpassprovider.email.toString(),
-                          newpasswordcontroller.text,
-                          context);
+                        Newpasswordrepo().updatepassword(
+                            forgotpassprovider.email.toString(),
+                            newpasswordcontroller.text,
+                            context);
                       },
                       child: const Center(
                           child: Text('Submit',
@@ -88,7 +85,6 @@ class NewPasswordscreen extends StatelessWidget {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),

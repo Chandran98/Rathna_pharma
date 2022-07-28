@@ -28,96 +28,102 @@ class _LrupdatepageState extends State<Lrupdatepage> {
           backgroundColor: kPrimaryColor,
           title: Text("LR-Update"),
         ),
-        body:data.loading?const Indicator(): ListView.builder(
-            itemCount: data.models.length,
-            itemBuilder: (ctx, index) {
-              var jsondata = data.models[index].lrupdateData[index];
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                    child: ExpansionTile(
-                        subtitle: Listname(
-                          caption: "Courier No.",
-                          name: jsondata.courierNo.toString(),
-                        ),
-                        title: Listname(
-                          caption: "Lr No.",
-                          name: jsondata.lrNo.toString(),
-                        ),
-                        children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+        body: data.loading
+            ? const Indicator()
+            : ListView.builder(
+                itemCount: data.models.length,
+                itemBuilder: (ctx, index) {
+                  var jsondata = data.models[index].lrupdateData[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                        child: ExpansionTile(
+                            subtitle: Listname(
+                              caption: "Courier No.",
+                              name: jsondata.courierNo.toString(),
+                            ),
+                            title: Listname(
+                              caption: "Lr No.",
+                              name: jsondata.lrNo.toString(),
+                            ),
                             children: [
-                              spacedh10,
-                              Listname(
-                                  caption: "Created Date",
-                                  name: DateFormat("dd-mm-yyyy")
-                                      .format(jsondata.createdDate)
-                                  // jsondata.lrDate.toString(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  spacedh10,
+                                  Listname(
+                                      caption: "Created Date",
+                                      name: DateFormat("dd-mm-yyyy")
+                                          .format(jsondata.createdDate)
+                                      // jsondata.lrDate.toString(),
+                                      ),
+                                  Listname(
+                                    caption: "Company Name",
+                                    name: jsondata.companyName.toString(),
                                   ),
-                              Listname(
-                                caption: "Company Name",
-                                name: jsondata.companyName.toString(),
-                              ),
-                              Listname(
-                                caption: "Customer Name",
-                                name: jsondata.customerName.toString(),
-                              ),
-                              Listname(
-                                caption: "Customer City",
-                                name: jsondata.customerCity.toString(),
-                              ), Listname(
-                                  caption: "Lr Date",
-                                  name: DateFormat("dd-mm-yyyy")
-                                      .format(jsondata.lrDate)
-                                  // jsondata.lrDate.toString(),
+                                  Listname(
+                                    caption: "Customer Name",
+                                    name: jsondata.customerName.toString(),
                                   ),
-                              Listname(
-                                caption: "No. of Boxes",
-                                name: jsondata.noOfBoxes.toString(),
-                              ),
-                              Listname(
-                                caption: "Invoice no.",
-                                name: jsondata.invoiceNo.toString(),
-                              ),
-                              Listname(
-                                caption: "Invoice value",
-                                name: jsondata.invoiceValue.toString(),
-                              ),
-                              Listname(
-                                caption: "Invoice Date",
-                                name: DateFormat("dd-mm-yyyy")
-                                    .format(jsondata.invoiceDate),
-                              ),
-                              Listname(
-                                caption: "Cheque no.",
-                                name: jsondata.chequeNo.toString(),
-                              ),
-                              Listname(
-                                caption: "Cheque Date.",
-                                name: DateFormat("dd-mm-yyyy")
-                                    .format(jsondata.chequeDate),
-                              ),
-                              Listname(
-                                caption: "Transport name.",
-                                name: jsondata.transportName.toString(),
-                              ),
-                              Listname(
-                                caption: "Eway Bill no.",
-                                name: jsondata.ewayBillNo.toString(),
-                              ),
-                              Listname(
-                                caption: "Weight",
-                                name: jsondata.weight.toString(),
-                              ),
-                              Text("Comments:"),
-                              Text(jsondata.comment.toString()),spacedh20
-                            ]),
-                      )
-                    ])),
-              );
-            }));
+                                  Listname(
+                                    caption: "Customer City",
+                                    name: jsondata.customerCity.toString(),
+                                  ),
+                                  Listname(
+                                      caption: "Lr Date",
+                                      name: DateFormat("dd-mm-yyyy")
+                                          .format(jsondata.lrDate)
+                                      // jsondata.lrDate.toString(),
+                                      ),
+                                  Listname(
+                                    caption: "No. of Boxes",
+                                    name: jsondata.noOfBoxes.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Invoice no.",
+                                    name: jsondata.invoiceNo.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Invoice value",
+                                    name: jsondata.invoiceValue.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Invoice Date",
+                                    name: DateFormat("dd-mm-yyyy")
+                                        .format(jsondata.invoiceDate),
+                                  ),
+                                  Listname(
+                                    caption: "Cheque no.",
+                                    name: jsondata.chequeNo.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Cheque Date.",
+                                    name: DateFormat("dd-mm-yyyy")
+                                        .format(jsondata.chequeDate),
+                                  ),
+                                  Listname(
+                                    caption: "Transport name.",
+                                    name: jsondata.transportName.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Eway Bill no.",
+                                    name: jsondata.ewayBillNo.toString(),
+                                  ),
+                                  Listname(
+                                    caption: "Weight",
+                                    name: jsondata.weight.toString(),
+                                  ),
+                                  Listcolname(
+                                      caption: "Comments :",
+                                      name: jsondata.comment.toString()),
+                                  spacedh20
+                                ]),
+                          )
+                        ])),
+                  );
+                }));
   }
 }

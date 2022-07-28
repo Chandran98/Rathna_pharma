@@ -44,7 +44,7 @@ class _BaseScreenState extends State<BaseScreen> {
                 icFeaturedOutlined,
                 height: kBottomNavigationBarItemSize,
               ),
-              label: "Featured",
+              label: "Home",
             ),
             const BottomNavigationBarItem(
               activeIcon: Icon(

@@ -143,7 +143,10 @@ class _QueryscreenState extends State<Queryscreen> {
                               elevation: 7.0,
                               child: TextButton(
                                 onPressed: () {
-                                  if (_formkey.currentState.validate()) {
+                                 if(servicename==null){
+                                  Utils.toastmessage("Select service in dropdown");
+                                 }else{
+                                   if (_formkey.currentState.validate()) {
                                     Appservies()
                                         .checkInternet()
                                         .then((connection) async {
@@ -158,6 +161,7 @@ class _QueryscreenState extends State<Queryscreen> {
                                       }
                                     });
                                   }
+                                 }
                                 },
                                 child: const Center(
                                     child: Text('Submit',

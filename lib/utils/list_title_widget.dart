@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rathna/theme/colors/color_palette.dart';
 
 class Listname extends StatelessWidget {
   String caption, name;
@@ -9,12 +8,16 @@ class Listname extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding:  EdgeInsets.symmetric(vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(caption),
-          Text(name.toString()),
+          Text(caption,style: GoogleFonts.poppins(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,),),
+          Text(name.toString(), style: GoogleFonts.poppins(
+              fontSize: 15,fontWeight: FontWeight.w400,
+            ),),
         ],
       ),
     );
@@ -30,15 +33,40 @@ class Listcolname extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(caption,style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w600, color: black),),
+          Text(
+            caption,
+            style: GoogleFonts.poppins(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
           Text(
             name.toString(),
-            style: GoogleFonts.poppins(fontSize: 15, color: grey),
+            style: GoogleFonts.poppins(
+              fontSize: 15,
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+
+
+
+// class Listname2 extends StatelessWidget {
+//   String caption, name;
+//   Listname2({this.caption, this.name});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 5),
+//       child: ListTile(title: Text(caption),
+//       trailing:   Text(name),)
+//     );
+//   }
+// }

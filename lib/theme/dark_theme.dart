@@ -7,6 +7,8 @@ ThemeData dark = ThemeData(
   fontFamily: 'Rubik',
   primaryColor: kPrimaryColor,
   brightness: Brightness.dark,
+  expansionTileTheme: const ExpansionTileThemeData(
+      textColor: kPrimaryColor, iconColor: kPrimaryColor),
   scaffoldBackgroundColor: const Color(0xFF2C2C2C),
   cardColor: const Color(0xFF252525),
   hintColor: const Color(0xFFE7F6F8),
