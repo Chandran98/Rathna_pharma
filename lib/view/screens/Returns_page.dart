@@ -35,7 +35,7 @@ class _ReturnspageState extends State<Returnspage> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: kPrimaryColor,
-            title: Text("Return's"),
+            title: Text("Stock Returns"),
           ),
           body: data.loading
               ? const Indicator()
@@ -47,7 +47,7 @@ class _ReturnspageState extends State<Returnspage> {
                       load() {
                         // ignore: unrelated_type_equality_checks
                         if (jsondata.returnsType == 1.toString()) {
-                          return "Saleable";
+                          return "Salable";
                         } else {
                           return "Expired";
                         }
@@ -64,7 +64,11 @@ class _ReturnspageState extends State<Returnspage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text("Return Type:"),
+                                      Text("Return Type:",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                          )),
                                       Container(
                                           decoration: BoxDecoration(
                                               color: jsondata.returnsType ==
@@ -90,7 +94,7 @@ class _ReturnspageState extends State<Returnspage> {
                                     ],
                                   ),
                                 ),
-                                title: Listname(
+                                title: TitleListname(
                                   caption: "Courier no.",
                                   name: jsondata.courierNo,
                                 ),

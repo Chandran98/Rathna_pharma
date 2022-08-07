@@ -15,6 +15,7 @@ import 'package:rathna/utils/app_constants.dart';
 import 'package:rathna/view/screens/splash.dart';
 
 import 'helper/Internet connectivity/connectivity.dart';
+import 'provider/company_list_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,8 @@ void main() {
     ChangeNotifierProvider<CoverProvider>(create: (context) => CoverProvider()),
     ChangeNotifierProvider<ReturnProvider>(
         create: (context) => ReturnProvider()),
+    ChangeNotifierProvider<CompanylistProvider>(
+        create: (context) => CompanylistProvider()),
     ChangeNotifierProvider<LrupdateProvider>(
         create: (context) => LrupdateProvider()),
     ChangeNotifierProvider<Queryprovider>(create: (context) => Queryprovider()),
@@ -46,7 +49,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: Appconstants.app_name,
       debugShowCheckedModeBanner: false,
-      
       theme: Provider.of<Themeprovider>(context).darktheme ? dark : light,
       home: Splashscreen(),
     );

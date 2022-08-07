@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:rathna/models/Cover_models.dart';
 import 'package:rathna/utils/app_url.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../utils/hover_message.dart';
 
 class CoverProvider with ChangeNotifier {
@@ -40,13 +39,13 @@ class CoverProvider with ChangeNotifier {
         _models = loadData;
         notifyListeners();
       } else {
-          Utils.toastmessage("Something went wrong");
+        Utils.toastmessage("Something went wrong");
       }
     } catch (e) {
       Utils.toastmessage("No data found");
       setloading(false);
       print(e.toString());
-          notifyListeners();
+      notifyListeners();
     }
   }
 

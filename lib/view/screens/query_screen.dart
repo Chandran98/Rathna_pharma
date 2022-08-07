@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
+import 'package:rathna/provider/company_list_provider.dart';
 import 'package:rathna/provider/query_provider.dart';
 import 'package:rathna/services/query_services.dart';
 import 'package:rathna/theme/colors/color_palette.dart';
@@ -12,22 +14,60 @@ import '../../provider/theme_provider.dart';
 
 class Queryscreen extends StatefulWidget {
   const Queryscreen({Key key}) : super(key: key);
-
   @override
   State<Queryscreen> createState() => _QueryscreenState();
 }
 
 class _QueryscreenState extends State<Queryscreen> {
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
   void initState() {
     Queryrepo();
+    Provider.of<CompanylistProvider>(context, listen: false)
+        .getApiCall(context);
+
     super.initState();
   }
 
-  // ignore: prefer_typing_uninitialized_variables
   var servicename;
-  List genderlist = ["LR-Update", "Covers", "Returns"];
+  var companyname;
+  List servicelist = ["LR-Update", "Covers", "Returns"];
+  List companylist = [
+    "Alembic",
+    "Wockhardt Ltd",
+    "Oaknet Healthcare (P) Ltd",
+    "Charak Pharma Pvt Ltd",
+    "MSN Labs Pvt. Ltd",
+    "Koye Pharma",
+    "Rathna Specialities",
+    "Apex Labs Pvt. Ltd",
+    "Comed Chemicals",
+    "Sun Dayota Numantis",
+    "Q Check Pharma",
+    "By By Pharma",
+    "Lupin Ltd",
+    "Alembic Stock Transfer Only",
+    "Oaknet Healthcare Sample Details",
+    "Personal Covers",
+    "Sri Rathna Specialities",
+    "Sri Rathna Specialities - MI Lab",
+    "Sri Rathna Specialities - Q-Check",
+    "Rathna Enterprises",
+    "Neoveda Pvt Ltd",
+    "STCS logistics pvt .ltd",
+    "PARVATHY AGENCIES",
+    "Vedistry Pvt Ltd ",
+    "AXOLE PHARMA",
+    "YOURS VACCINE",
+    "THRIVID CONSULTING",
+    "PULSE PHARMACEUTICALS PVT LTD",
+    "Elbrit life sciences pvt ltd",
+    "GRIN O LIFE CARE PVT LTD",
+    "SAYEE PHARMACY",
+    "MEDMANOR ORGANIC",
+    "ELBRIT LIFE SCIENCE PVT LTD SAMPLES"
+  ];
+
   TextEditingController querycontroller = TextEditingController();
   TextEditingController datacontroller = TextEditingController();
   final bool _isLoading = false;
@@ -36,11 +76,12 @@ class _QueryscreenState extends State<Queryscreen> {
   @override
   Widget build(BuildContext context) {
     var theme = Provider.of<Themeprovider>(context);
+    final data = Provider.of<CompanylistProvider>(context);
     // ignore: prefer_typing_uninitialized_variables
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: Text("Queries"),
+            title: const Text("Queries"),
             centerTitle: true,
             backgroundColor: kPrimaryColor,
           ),
@@ -74,9 +115,9 @@ class _QueryscreenState extends State<Queryscreen> {
                           iconSize: 35,
                           isExpanded: true,
                           hint: const Text(
-                            "Services",
+                            "Select Services",
                           ),
-                          items: genderlist.map((valueitem) {
+                          items: servicelist.map((valueitem) {
                             return DropdownMenuItem(
                               value: valueitem,
                               child: Text(valueitem),
@@ -90,6 +131,33 @@ class _QueryscreenState extends State<Queryscreen> {
                           value: servicename,
                         ),
                       ),
+                      spacedh30,
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 1),
+                            borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.all(5),
+                        child: DropdownButton(
+                          underline: const SizedBox(),
+                          iconSize: 35,
+                          isExpanded: true,
+                          hint: const Text(
+                            "Select Company",
+                          ),
+                          items: companylist.map((valueitem) {
+                            return DropdownMenuItem(
+                              value: valueitem,
+                              child: Text(valueitem.toString()),
+                            );
+                          }).toList(),
+                          onChanged: (selected) {
+                            setState(() {
+                              companyname = selected;
+                            });
+                          },
+                          value: companyname,
+                        ),
+                      ),
                       spacedh20,
                       spacedh20,
                       TextFormField(
@@ -101,26 +169,27 @@ class _QueryscreenState extends State<Queryscreen> {
                         },
                         maxLines: 5,
                         controller: querycontroller,
-                        style: primaryTextStyle(color: theme.darktheme
-                                  ? white
-                                  : black,),
+                        style: primaryTextStyle(
+                          color: theme.darktheme ? white : black,
+                        ),
                         // focusNode: emailFocus,
                         decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.email,color: kPrimaryColor,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            // borderSide: BorderSide(color: appPrimaryColor)
-                          ),
-                          enabledBorder: OutlineInputBorder(
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: kPrimaryColor,
+                            ),
+                            focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                              borderSide: const BorderSide(
-                                  width: 1, color: Color(0xFFA8ABAD))),
-                          labelText: 'Tell your Queries here',
-                          prefixIconColor: kPrimaryColor
-                          // labelStyle: primaryTextStyle(),
-                        ),
+                              // borderSide: BorderSide(color: appPrimaryColor)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: const BorderSide(
+                                    width: 1, color: Color(0xFFA8ABAD))),
+                            labelText: 'Tell your Queries here',
+                            prefixIconColor: kPrimaryColor
+                            // labelStyle: primaryTextStyle(),
+                            ),
                         //isDarkModeOn ? white : blackColor,
                         // keyboardType: TextInputType.emailAddress,
                         // validator: (s) {
@@ -143,25 +212,26 @@ class _QueryscreenState extends State<Queryscreen> {
                               elevation: 7.0,
                               child: TextButton(
                                 onPressed: () {
-                                 if(servicename==null){
-                                  Utils.toastmessage("Select service in dropdown");
-                                 }else{
-                                   if (_formkey.currentState.validate()) {
-                                    Appservies()
-                                        .checkInternet()
-                                        .then((connection) async {
-                                      if (connection == false) {
-                                        Utils.toastmessage(
-                                            "No internet connection");
-                                      } else {
-                                        _queryprovider.queryupload(
-                                            servicename.toString(),
-                                            querycontroller.text,
-                                            context);
-                                      }
-                                    });
+                                  if (servicename == null) {
+                                    Utils.toastmessage(
+                                        "Select service in dropdown");
+                                  } else {
+                                    if (_formkey.currentState.validate()) {
+                                      Appservies()
+                                          .checkInternet()
+                                          .then((connection) async {
+                                        if (connection == false) {
+                                          Utils.toastmessage(
+                                              "No internet connection");
+                                        } else {
+                                          _queryprovider.queryupload(
+                                              servicename.toString(),
+                                              querycontroller.text,
+                                              context);
+                                        }
+                                      });
+                                    }
                                   }
-                                 }
                                 },
                                 child: const Center(
                                     child: Text('Submit',
@@ -204,3 +274,28 @@ class _QueryscreenState extends State<Queryscreen> {
     );
   }
 }
+
+
+// "Q Check Pharma"    ,
+// "By By Pharma"    ,
+//  "Lupin Ltd"    ,
+//  "Alembic Stock Transfer Only"    ,
+//  "Oaknet Healthcare Sample Details"    ,
+//   "Personal Covers"    ,
+//  "Sri Rathna Specialities"    ,
+// "Sri Rathna Specialities - MI Lab"    ,
+// "Sri Rathna Specialities - Q-Check"    ,
+//  "Rathna Enterprises"    ,
+// "Neoveda Pvt Ltd"    ,
+// "STCS logistics pvt .ltd"    ,
+// "PARVATHY AGENCIES"    ,
+// "Vedistry Pvt Ltd "    ,
+//  "AXOLE PHARMA"    ,
+//  "YOURS VACCINE"    ,
+//  "THRIVID CONSULTING"    ,
+// "PULSE PHARMACEUTICALS PVT LTD"    ,
+// "Elbrit life sciences pvt ltd"    ,
+// "GRIN O LIFE CARE PVT LTD"    ,
+// "SAYEE PHARMACY"    ,
+// "MEDMANOR ORGANIC"    ,
+// "ELBRIT LIFE SCIENCE PVT LTD SAMPLES"  

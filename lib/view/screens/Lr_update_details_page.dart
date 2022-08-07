@@ -26,7 +26,7 @@ class _LrupdatepageState extends State<Lrupdatepage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: kPrimaryColor,
-          title: Text("LR-Update"),
+          title: Text("Dispatch-report"),
         ),
         body: data.loading
             ? const Indicator()
@@ -38,14 +38,15 @@ class _LrupdatepageState extends State<Lrupdatepage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                         child: ExpansionTile(
-                            subtitle: Listname(
-                              caption: "Courier No.",
-                              name: jsondata.courierNo.toString(),
-                            ),
-                            title: Listname(
+                           title: TitleListname(
                               caption: "Lr No.",
                               name: jsondata.lrNo.toString(),
                             ),
+                            subtitle: TitleListname(
+                               caption: "Invoice no.",
+                                    name: jsondata.invoiceNo.toString(),
+                            ),
+                           
                             children: [
                           Padding(
                             padding:
@@ -82,9 +83,8 @@ class _LrupdatepageState extends State<Lrupdatepage> {
                                     caption: "No. of Boxes",
                                     name: jsondata.noOfBoxes.toString(),
                                   ),
-                                  Listname(
-                                    caption: "Invoice no.",
-                                    name: jsondata.invoiceNo.toString(),
+                                  Listname( caption: "Courier No.",
+                              name: jsondata.courierNo.toString(),
                                   ),
                                   Listname(
                                     caption: "Invoice value",

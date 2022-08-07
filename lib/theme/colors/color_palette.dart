@@ -5,13 +5,11 @@ const scaffoldLightColor = Color(0xFFEBF2F7);
 const scaffoldDarkColor = Color(0xFF0E1116);
 const cardDarkColor = Color(0xFF1C1F26);
 const dividerDarkColor = Color(0xFF393D45);
-
 const textPrimaryColor = Color(0xFF2E3033);
 const textSecondaryColor = Color(0xFF757575);
 const viewLineColor = Color(0xFFEAEAEA);
 const errorColor = Color(0xFFFF6347);
 const transparentColor = Color(0x00000000);
-
 const whiteColor = Colors.white;
 const blackColor = Colors.black;
 

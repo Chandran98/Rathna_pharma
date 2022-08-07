@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../theme/colors/color_palette.dart';
 
 Color textPrimaryColorGlobal = textPrimaryColor;
@@ -16,7 +13,6 @@ String fontFamilySecondaryGlobal;
 FontWeight fontWeightBoldGlobal = FontWeight.bold;
 FontWeight fontWeightPrimaryGlobal = FontWeight.normal;
 FontWeight fontWeightSecondaryGlobal = FontWeight.normal;
-
 Color appBarBackgroundColorGlobal = Colors.white;
 Color appButtonBackgroundColorGlobal = Colors.white;
 Color defaultAppButtonTextColorGlobal = textPrimaryColorGlobal;
@@ -25,31 +21,23 @@ double defaultAppButtonElevation = 4.0;
 bool enableAppButtonScaleAnimationGlobal = true;
 int appButtonScaleAnimationDurationGlobal;
 ShapeBorder defaultAppButtonShapeBorder;
-
 Color defaultLoaderBgColorGlobal = Colors.white;
 Color defaultLoaderAccentColorGlobal;
-
 Color defaultInkWellSplashColor;
 Color defaultInkWellHoverColor;
 Color defaultInkWellHighlightColor;
 double defaultInkWellRadius;
-
 Color shadowColorGlobal = Colors.grey.withOpacity(0.2);
 int defaultElevation = 4;
 double defaultRadius = 8.0;
 double defaultBlurRadius = 4.0;
 double defaultSpreadRadius = 1.0;
 double defaultAppBarElevation = 4.0;
-
 double tabletBreakpointGlobal = 600.0;
 double desktopBreakpointGlobal = 720.0;
-
 int passwordLengthGlobal = 6;
-
 SharedPreferences sharedPreferences;
-
 ShapeBorder defaultDialogShape;
-
 // // String defaultCurrencySymbol = currencyRupee;
 
 // // LanguageDataModel? selectedLanguageDataModel;
@@ -80,21 +68,13 @@ var spacedw10 = const SizedBox(width: 10);
 var spacedw20 = const SizedBox(width: 20);
 var spacedw30 = const SizedBox(width: 30);
 var spacedw40 = const SizedBox(width: 40);
-
-
 const kPrimaryColor = Color(0xff6849ef);
 const kPrimaryLight = Color(0xff8a72f1);
-
-
 ///  size  ///
 const kBottomNavigationBarItemSize = 24.0;
 const kCategoryCardImageSize = 120.0;
-
-
-/// icons  ///
- 
+/// icons  /// 
  const _path = 'assets/icons';
-
 const icFeatured = '$_path/star.png';
 const icFeaturedOutlined = '$_path/star_outlined.png';
 const icLearning = '$_path/play.png';

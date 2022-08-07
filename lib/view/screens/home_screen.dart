@@ -30,9 +30,9 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
     AwesomeDialog(
       context: context,
       dialogType: DialogType.WARNING,
-      borderSide: BorderSide(color: white, width: 2),
+      borderSide: const BorderSide(color: white, width: 2),
       width: 350,
-      buttonsBorderRadius: BorderRadius.all(Radius.circular(2)),
+      buttonsBorderRadius: const BorderRadius.all(Radius.circular(2)),
       headerAnimationLoop: false,
       animType: AnimType.LEFTSLIDE,
       title: 'Exit',
@@ -61,19 +61,20 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
               return Future.value(false);
             },
             child: Scaffold(
-              floatingActionButton: FloatingActionButton.extended(backgroundColor: kPrimaryColor.withOpacity(0.7),
-                label: const Text(
-                  "Quick call",
-                  style: TextStyle(color: white),
-                ),
-                icon: const Icon(
-                  Icons.call,
-                  size: 20,
-                  color: white,
-                ),
-                onPressed: () {
-                  launch("tel: 7448954986");
-                }),
+              floatingActionButton: FloatingActionButton.extended(
+                  backgroundColor: kPrimaryColor.withOpacity(0.7),
+                  label: const Text(
+                    "Quick call",
+                    style: TextStyle(color: white),
+                  ),
+                  icon: const Icon(
+                    Icons.call,
+                    size: 20,
+                    color: white,
+                  ),
+                  onPressed: () {
+                    launch("tel: 04467480500");
+                  }),
               body: SingleChildScrollView(
                 child: Column(
                   children: const [
@@ -127,7 +128,7 @@ class Body extends StatelessWidget {
           children: [
             Card23(
               theme: theme,
-              titlecard: "Covers",
+              titlecard: "Cheque dispatch",
               thumbnail: "assets/icons/laptop.png",
               ontap: () {
                 Navigator.push(context,
@@ -136,7 +137,7 @@ class Body extends StatelessWidget {
             ),
             Card23(
               theme: theme,
-              titlecard: "Returns",
+              titlecard: "Stock Returns",
               thumbnail: 'assets/icons/return.png',
               ontap: () {
                 Navigator.push(
@@ -151,7 +152,7 @@ class Body extends StatelessWidget {
           children: [
             Card23(
               theme: theme,
-              titlecard: "Lr-Update",
+              titlecard: "Dispatch-report",
               thumbnail: 'assets/icons/lr_update.png',
               ontap: () {
                 Navigator.push(
@@ -379,12 +380,14 @@ class _AppBarState extends State<AppBar> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Text("Hello $username",
                   //     style: GoogleFonts.poppins(color: white,fontSize:17)),
                   // spacedh5,
-                  Text("Customer ID: $userid", style: TextStyle(color: white, fontSize: 18)),
+                  Text("Customer ID: $userid",
+                      style: TextStyle(color: white, fontSize: 18)),
                 ],
               ),
               CircleButton(

@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: must_be_immutable
+class TitleListname extends StatelessWidget {
+  String caption, name;
+  TitleListname({this.caption, this.name});
 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:  const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(caption,style: GoogleFonts.poppins(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,),),
+          
+          Text(name.toString(), style: GoogleFonts.poppins(
+              fontSize: 15,fontWeight: FontWeight.w400,
+            ),),
+        ],
+      ),
+    );
+  }
+}
 class Listname extends StatelessWidget {
   String caption, name;
   Listname({this.caption, this.name});
@@ -12,12 +35,17 @@ class Listname extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(caption,style: GoogleFonts.poppins(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,),),
-          Text(name.toString(), style: GoogleFonts.poppins(
-              fontSize: 15,fontWeight: FontWeight.w400,
-            ),),
+          Expanded(
+            child: Text(caption,style: GoogleFonts.poppins(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,),),
+          ),
+          
+          Expanded(
+            child: Text(name.toString(), style: GoogleFonts.poppins(
+                fontSize: 15,fontWeight: FontWeight.w400,
+              ),),
+          ),
         ],
       ),
     );

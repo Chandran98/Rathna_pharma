@@ -1,4 +1,5 @@
 // import 'package:flutter/material.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:rathna/theme/colors/color_palette.dart';
 // import 'package:url_launcher/url_launcher.dart';
@@ -90,16 +91,16 @@
 //                       color: greenColor,
 //                     ),
 //                   ),
-//                   SizedBox(height: 20),
-//                   Boxshape(
-//                     link:
-//                         "https://wa.me/$whatsapp?text= Hi, I have an emergency",
-//                     text: "translate.whatsapp",
-//                     // icon: FaIcon(
-//                     //   FontAwesomeIcons.whatsapp,
-//                     //   color: Colors.green,
-//                     // ),
-//                   ),
+//                   // SizedBox(height: 20),
+//                   // Boxshape(
+//                   //   link:
+//                   //       "https://wa.me/$whatsapp?text= Hi, I have an emergency",
+//                   //   text: "translate.whatsapp",
+//                   //   // icon: FaIcon(
+//                   //   //   FontAwesomeIcons.whatsapp,
+//                   //   //   color: Colors.green,
+//                   //   // ),
+//                   // ),
 //                   SizedBox(
 //                     height: 20,
 //                   ),
@@ -116,7 +117,7 @@
 //                   ),
 //                   Boxshape(
 //                     link: "mailto: indolawassociates@gmail.com",
-//                     text: translate.mail,
+//                     text: "translate.mail",
 //                     icon: FaIcon(
 //                       FontAwesomeIcons.mailBulk,
 //                       color: Color.fromARGB(255, 175, 116, 76),
@@ -128,7 +129,7 @@
 //                   Padding(
 //                     padding: const EdgeInsets.symmetric(horizontal: 30),
 //                     child: Divider(
-//                       color: divcolor,
+//                       color: Colors.grey,
 //                     ),
 //                   ),
 //                   SizedBox(
@@ -136,7 +137,7 @@
 //                   ),
 //                   FittedBox(
 //                     child: Text(
-//                       translate.exp,
+//                       "translate.exp",
 //                       style: GoogleFonts.poppins(
 //                           fontSize: 17,
 //                           fontWeight: FontWeight.w500),
@@ -146,7 +147,7 @@
 //                     height: 8,
 //                   ),
 //                   Text(
-//                     translate.helptitle,
+//                     "translate.helptitle",
 //                     style: GoogleFonts.poppins(
 //                         fontSize: 13,
 //                         fontWeight: FontWeight.w400),
@@ -167,7 +168,7 @@
 //                   SizedBox(
 //                     height: 30,
 //                   ),
-//                   Socialmedia()
+//                   // Socialmedia()
 //                 ],
 //               ),
 //             ),
@@ -183,7 +184,7 @@
 //   FaIcon icon;
 //   Boxshape(
 //       {  this.link,  this.text,  this.icon})
-//       : super(key: key);
+//       ;
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -205,7 +206,7 @@
 //             child: Row(
 //               mainAxisAlignment: MainAxisAlignment.center,
 //               children: [
-//                 icon,
+//                 Container(child: icon),
 //                 SizedBox(
 //                   width: 20,
 //                 ),

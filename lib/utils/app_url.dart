@@ -6,6 +6,7 @@ class AppURl {
   static var coverurl      = baseurl + "core/api/cover/getById?customer_id=";
   static var returnsurl    = baseurl + "core/api/return/getById?customer_id=";
   static var allqueryurl   = baseurl + "core/api/query/getById?customer_id=";
+  static var companylisturl= baseurl + "core/api/company/getall.php";
   static var queryurl      = baseurl + "core/api/query/addquery";
   static var forgotpass    = baseurl + "core/api/customer/forgotpassword";
   static var newpassword   = baseurl + "core/api/customer/newPassword";

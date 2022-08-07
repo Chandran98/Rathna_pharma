@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,27 +46,30 @@ class _SettingscreenState extends State<Settingscreen> {
         ),
         actions: [
           CupertinoDialogAction(
-            child:  Text('Cancel',
-                  style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),),
+            child: Text(
+              'Cancel',
+              style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),
+            ),
             onPressed: () {
-               Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
           ),
           CupertinoDialogAction(
-            child:  Text('Logout',
-               style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),),
-            onPressed: () { Appservies().checkInternet().then((connection) async {
-                      if (connection == false) {
-                        Utils.toastmessage("No internet connection");
-                      } else {
-                        await prefservice.removestatus("status").then((value) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const Loginscreen()));
-                        });
-                      }
-                    });
+            child: Text(
+              'Logout',
+              style: GoogleFonts.poppins(color: kPrimaryColor, fontSize: 16),
+            ),
+            onPressed: () {
+              Appservies().checkInternet().then((connection) async {
+                if (connection == false) {
+                  Utils.toastmessage("No internet connection");
+                } else {
+                  await prefservice.removestatus("status").then((value) {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => const Loginscreen()));
+                  });
+                }
+              });
             },
           )
         ],
@@ -72,49 +77,79 @@ class _SettingscreenState extends State<Settingscreen> {
     );
   }
 
-  void logout(context) {
+  void boxfunction() {
     var theme = Provider.of<Themeprovider>(context, listen: false);
-    showDialog(
-        context: (context),
-        builder: (_) {
-          return AlertDialog(
-            title: Text(
-              "Do you want to Leave",
-              style: GoogleFonts.poppins(
-                color: theme.darktheme ? white : black,
-              ),
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: Text(
+          'Contact Us',
+          style: GoogleFonts.poppins(
+            color: theme.darktheme ? white : black,
+          ),
+        ),
+        content: Text(
+          'Do you have any queries just contact Us ?',
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: theme.darktheme ? white : black,
+          ),
+        ),
+        actions: [
+          CupertinoDialogAction(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Icon(
+                  Icons.phone,
+                  size: 45,color: kPrimaryColor,
+                ),
+                Text(
+                  'Call  us',
+                  style: GoogleFonts.poppins(fontSize: 32, color:kPrimaryColor),
+                ),
+              ],
             ),
-            actions: [
-              TextButton(
-                  onPressed: () async {
-                    Appservies().checkInternet().then((connection) async {
-                      if (connection == false) {
-                        Utils.toastmessage("No internet connection");
-                      } else {
-                        await prefservice.removestatus("status").then((value) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const Loginscreen()));
-                        });
-                      }
-                    });
-                  },
-                  child: const Text(
-                    "Ok",
-                    style: TextStyle(color: kPrimaryColor, fontSize: 16),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(_).pop();
-                  },
-                  child: const Text(
-                    "cancel",
-                    style: TextStyle(color: kPrimaryColor, fontSize: 16),
-                  )),
-            ],
-          );
-        });
+            onPressed: () {
+             launch("tel: 04467480500");
+            },
+          ),
+          CupertinoDialogAction(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  Icons.mail,
+                  size: 45,color: kPrimaryColor,
+                ),
+                Text(
+                  'Mail Us',
+                  style: GoogleFonts.poppins(fontSize: 32, color:kPrimaryColor),
+                ),
+              ],
+            ),
+            // ignore: deprecated_member_use
+            onPressed: () {launch("mailto: indolawassociates@gmail.com");},
+          ),
+          CupertinoDialogAction(
+            child: Row(  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Icon(
+                  Icons.cancel_outlined,
+                  size: 45,color: redColor,
+                ),
+                Text(
+                  'Cancel',
+                  style: GoogleFonts.poppins(fontSize: 32, color: redColor),
+                ),
+              ],
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -241,6 +276,7 @@ class _SettingscreenState extends State<Settingscreen> {
                 Listtilewidget(
                   color: Colors.blueAccent,
                   ontap: () {
+                    boxfunction();
                     // Navigator.pushNamed(context, contactroute);
                   },
                   icon: FeatherIcons.headphones,
@@ -256,7 +292,7 @@ class _SettingscreenState extends State<Settingscreen> {
                   title: 'Rate this app',
                 ),
                 Listtilewidget(
-                  color: Colors.redAccent,
+                  color: Colors.greenAccent,
                   ontap: () {
                     launch(
                         "https://drive.google.com/file/d/16DRzCPZrXS1EiiU3NFC9ftqkigNaaJYZ/view?usp=sharing");
@@ -264,14 +300,14 @@ class _SettingscreenState extends State<Settingscreen> {
                   icon: FeatherIcons.lock,
                   title: 'Privacy policy',
                 ),
-                Listtilewidget(
-                  color: Colors.greenAccent,
-                  ontap: () {
-                    launch("https://indolawassociates.com/");
-                  },
-                  icon: FeatherIcons.info,
-                  title: 'About us',
-                ),
+                // Listtilewidget(
+                //   color: Colors.greenAccent,
+                //   ontap: () {
+                //     launch("https://indolawassociates.com/");
+                //   },
+                //   icon: FeatherIcons.info,
+                //   title: 'About us',
+                // ),
                 Listtilewidget(
                     title: "Log out",
                     color: Colors.redAccent,

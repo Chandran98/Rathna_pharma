@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rathna/constants/constants.dart';
 import 'package:rathna/provider/cover_provider.dart';
 import 'package:rathna/utils/list_title_widget.dart';
-import 'package:lottie/lottie.dart';
 import 'package:rathna/utils/process_indicator.dart';
 
 class Coverpage extends StatefulWidget {
@@ -18,7 +16,8 @@ class Coverpage extends StatefulWidget {
 class _CoverpageState extends State<Coverpage> {
   @override
   void initState() {
-    super.initState();
+    super.
+    initState();
     Provider.of<CoverProvider>(context, listen: false).getApiCall(context);
   }
 
@@ -34,7 +33,7 @@ class _CoverpageState extends State<Coverpage> {
         onRefresh: () async => onrefresh(),
         child: Scaffold(
             appBar: AppBar(
-              title: const Text("Cover's "),
+              title: const Text("Cheque dispatch "),
               backgroundColor: kPrimaryColor,
             ),
             body: data.loading
@@ -49,10 +48,10 @@ class _CoverpageState extends State<Coverpage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
                             child: ExpansionTile(
-                                title: Listname(
+                                title: TitleListname(
                                     caption: "Courier No.",
                                     name: jsondata.courierNo),
-                                subtitle: Listname(
+                                subtitle: TitleListname(
                                   caption: "Created-Date",
                                   name: DateFormat("dd-mm-yyyy")
                                       .format(jsondata.createdDate),
