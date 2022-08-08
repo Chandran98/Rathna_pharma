@@ -1,4 +1,4 @@
-package com.example.rathna
+package com.rathna.pharma
 
 import io.flutter.embedding.android.FlutterActivity
 
